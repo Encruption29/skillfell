@@ -1,0 +1,80 @@
+{
+  "product": "Skillfell",
+  "trade": "skill manager for AI coding agents (developer tools / software)",
+  "rule": "copy.md 'Names are coined' — search the name with its trade and as a domain; a business of the trade or a famous person with the exact name in the first 10 results kills it.",
+  "checked": [
+    {
+      "candidate": "Skillbase",
+      "query": "Skillbase software tool skills manager",
+      "result": "skillbase.space — 'spm, Skills Package Manager', the package manager for AI knowledge; plus yourskillbase.com and github ariasbruno/skillbase",
+      "verdict": "taken (same trade)"
+    },
+    {
+      "candidate": "Skilldock",
+      "query": "\"Skilldock\" AI agent skills tool",
+      "result": "skilldock.io — skills platform with CLI and API for agents; plus a VS Code 'Skill Dock' extension",
+      "verdict": "taken (same trade)"
+    },
+    {
+      "candidate": "Skillpost",
+      "query": "\"Skillpost\" software OR AI OR app OR tool",
+      "result": "skillpostapp.com — Arab skills-portfolio platform; plus a LinkedIn 'Skillpost' education company",
+      "verdict": "taken"
+    },
+    {
+      "candidate": "Skillshelf",
+      "query": "\"Skillshelf\" app OR software OR AI",
+      "result": "skillshelf.ai — free AI skills library for ecommerce teams; github Wang-Cankun/skillshelf — 'a package manager for your agent skills'; skillshelf.dev directory",
+      "verdict": "taken (exactly this trade)"
+    },
+    {
+      "candidate": "Skillrow",
+      "query": "\"Skillrow\" app OR software OR AI",
+      "result": "Technogym SKILLROW — rowing machine and companion app (App Store, Google Play, technogym.com)",
+      "verdict": "taken (big established brand)"
+    },
+    {
+      "candidate": "Skillward / Skillnest",
+      "query": "\"Skillward\" OR \"Skillnest\" app OR software OR AI tool",
+      "result": "getskillward.com — AI learning-path platform; skillnest.ai resume builder; skillnest.fr; Chilean edtech Skillnest; github/devpost SkillNest agent projects",
+      "verdict": "taken"
+    },
+    {
+      "candidate": "Skillwright",
+      "query": "\"Skillwright\"",
+      "result": "skillwright.app — desktop app managing AI coding skills across Claude Code, Cursor, Windsurf, Copilot (exactly this trade); plus skillwright.com (Pakistan education), skillwright.io (AI agents course), a WoW addon, github gericke98/skillwright",
+      "verdict": "taken (one result is literally the same product idea)"
+    },
+    {
+      "candidate": "Skillgrove",
+      "query": "\"Skillgrove\" and \"Skillgrove\" AI agents skills OR software OR app",
+      "result": "elytraflight.com Skillgrove STEM learning site; skillgrovelms.com WordPress LMS; Framer marketplace template 'Skillgrove'; skillgrove.ca; a Reddit beta app 'SkillGrove'; a Women Defining AI community resource named Skillgrove",
+      "verdict": "taken"
+    },
+    {
+      "candidate": "Rulewright",
+      "query": "\"Rulewright\" software OR app OR tool",
+      "result": "pypi rulewright — mines coding-agent mistakes and proposes AGENTS.md/CLAUDE.md rules; crates.io rulewright for Rust workspaces; sodini.io Rulewright macOS app; albahadly RuleWright .NET rule engine; a dev.to Rulewright transaction-categorizer",
+      "verdict": "taken (devtools trade)"
+    },
+    {
+      "candidate": "Skillfell — ADOPTED",
+      "query": "\"Skillfell\" (general)",
+      "result": "No business, product or person named Skillfell. Only the Norwegian building term 'skillfellkledning' (board cladding) inside archived municipal PDFs, and dictionary-list misspellings ('skillfel').",
+      "verdict": "clear"
+    },
+    {
+      "candidate": "Skillfell — ADOPTED",
+      "query": "\"Skillfell\" AI OR software OR app OR dev tool",
+      "result": "No business of the trade. Nearest hits are different exact names: Skillfuel (recruitment software), SkillFall (one Devpost hackathon entry, not a business), SkillFed, SkillFeed, SkillFelix.",
+      "verdict": "clear"
+    },
+    {
+      "candidate": "Skillfell — ADOPTED",
+      "query": "\"skillfell.com\" OR \"skillfell.app\" OR \"skillfell.dev\" domain",
+      "result": "No such domains registered or in use. The lookup returns other names only (SkillFed skillfed.io, SkillFeed skillfeed.dev, Skillsell, SkillFelix).",
+      "verdict": "clear — name and domain free"
+    }
+  ],
+  "decision": "Skillfell (skill + fell, a northern moor: skills kept on high ground, one place, pinned). Coined compound, two syllables, not a dictionary word, not a model-default coinage. Mailto stand-in: hello@skillfell.example."
+}

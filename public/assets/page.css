@@ -1,0 +1,184 @@
+/* Skillfell page CSS: only what sits inside a visual and the kit lacks, and the recipes' page CSS.
+   Deal: centred hero, forest-pale-lime, schibsted, sharp, arrow, nav-centre, footer-columns,
+   close-word, dark-band, fluted-glass (hero) + silk-folds (features), cursor-spotlight + iris-opens. */
+
+/* ---- hero window (layout/hero-centred): the exchange sits in the window's top 260px, so it stands
+   whole above the frame's fade; the library column beside it is context and may run into the fade */
+.d-win--dark .d-win__body { grid-template-columns: 250px 1fr; min-height: 420px; }
+.d-win--dark .d-win__bar b { color: #eceee8; font-weight: 500; } .d-win--dark .d-win__bar .sp { flex: 1; }
+.hero__window .d-chat { padding: 12px 18px; gap: 6px; }
+.hero__window .d-msg--me small { display: none; }
+.hero__window .d-msg--bot { max-width: 86%; background: #22262b; color: #eceef0; }
+.hero__window .d-msg--bot small { display: inline; margin: 0 0 0 8px; white-space: nowrap; }
+
+/* the library column (context rows) */
+.inbox { border-right: 1px solid rgb(255 255 255 / .07); padding: 10px; display: grid; align-content: start; gap: 2px; }
+.inbox .q { height: 34px; margin-bottom: 6px; border-radius: 9px; background: rgb(255 255 255 / .06); display: flex; align-items: center; padding: 0 10px; color: #9aa0a6; font-size: 13px; }
+.inbox .t { display: grid; grid-template-columns: 30px 1fr auto; gap: 1px 10px; padding: 9px 8px; border-radius: 9px; font-size: 13px; }
+.inbox .t.is-on { background: rgb(255 255 255 / .07); }
+.inbox .t i { grid-row: 1 / span 2; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 600 13px/1 var(--font-text); font-style: normal; color: #0f1f10; }
+.inbox .t b { font-weight: 500; color: #eceee8; }
+.inbox .t time { color: #7d8389; font-size: 13px; }
+.inbox .t span { grid-column: 2 / -1; color: #8d9399; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.convo { display: grid; min-width: 0; align-content: start; }
+.acts { display: flex; gap: 8px; }
+.acts span { height: 30px; padding: 0 12px; border-radius: 99px; display: inline-flex; align-items: center; font-size: 13px; font-weight: 500; background: #f2f2f0; color: #121314; }
+.acts span + span { background: rgb(255 255 255 / .08); color: #eceef0; }
+@media (max-width: 639px) {
+  .d-win--dark .d-win__body { grid-template-columns: 1fr; }
+  .inbox { display: none; }
+  .hero__window .d-chat { font-size: 13px; padding: 12px 14px; }
+  .hero__window .d-msg--bot small, .hero__window .d-tool { display: none; }
+  .hero__window .d-win__bar .sp ~ span { display: none; }
+}
+
+/* the lit frame's own ground: pale forest paper (the fluted-glass canvas paints over it; the
+   data-fx-palette on the frame carries the same colours) */
+.hero--centred .hero__window { background: #e9efe0; }
+
+/* ---- app-frame (sections-library.md, the whole recipe). On a bg-dots section the .fill has no
+   definite height to flex into (backgrounds.css makes the section a centred grid), so the frame
+   takes the recipe's own height (about 1280 x 550); it stacks by height auto under 1024. */
+.app.ui { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); margin-top: var(--s-7); background: var(--u-bg); border: 1px solid var(--u-border); border-radius: var(--u-r); box-shadow: var(--u-shadow); }
+@media (min-width: 1024px) { #product .app.ui { height: clamp(420px, 38vw, 550px); flex: 0 0 auto; } }
+.app > .app__pane { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+.app > .app__pane + .app__pane { border-left: 1px solid var(--u-line); }
+.app > .app__pane > .ui-panel { width: 100%; border: 0; border-radius: 0; box-shadow: none; }
+/* the doc fragment keeps 440px by its own rule; in the open pane it spans the pane (the kit's own
+   phone rule does the same), and its page runs to the pane's foot, cut by it, never ending above */
+.app .ui-doc { width: 100%; height: 100%; }
+.app > .app__pane::after { content: ""; position: absolute; inset: auto 0 0 0; height: 64px; background: linear-gradient(transparent, var(--u-bg)); pointer-events: none; }
+@media (min-width: 1024px) and (max-width: 1279px) { .app.ui { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); } }
+@media (max-width: 1023px) {
+  .app.ui { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
+  /* the open pane takes its own 420px: with the rows auto the frame no longer leans on a
+     percentage height it cannot resolve under 1024 (the panes collapsed to 0 there) */
+  .app > .app__pane--open { height: 420px; }
+  /* 640-1023 only: under 640 the kit's own rules give the section a definite track, so the
+     frame still flexes there; in this band the wrap's height stays cyclic and the .fill's
+     flex-basis 0 collapses it, so the frame takes its panes' own height instead */
+  #product .app.ui { flex: 0 0 auto; }
+  .app > .app__pane--list { max-height: 252px; }
+  .app > .app__pane--list::after { display: none; }
+  .app .ui-win__side { display: none; }
+  .app .ui-win__body { grid-template-columns: minmax(0, 1fr); }
+  .app > .app__pane + .app__pane { border-left: 0; border-top: 1px solid var(--u-line); }
+}
+@media (max-width: 639px) {
+  .app.ui { grid-template-rows: auto; }
+  .app > .app__pane--list { display: none; }
+  .app > .app__pane + .app__pane { border-top: 0; }
+}
+
+/* ---- features-2x2: one panel height for the group */
+#features .panel { --p-h: 336px; }
+
+/* ---- split-text-left (cli): the facts' rhythm (24px between the blocks) */
+.cli-facts { margin-block: 12px; display: grid; gap: 6px; }
+.cli-facts p { margin: 0; }
+
+/* ---- pricing-three: the billing line under the price */
+.plan__bill { margin-top: 8px; font-size: 14px; line-height: 20px; color: var(--muted); }
+
+/* ---- rhythm and seam fixes (consistency rerun): the two bg grounds land on whole screens at every
+   width; the iris-opens cover clears the section's top edge where the ground changes; the plans
+   answer the pointer like every other linked card; the hero lead reaches 7:1 on the dark hero
+   (the #top keeps the rule ahead of the kit's .hero__lead.muted); the plans' lists pin to the
+   cards' foot so a stretched plan keeps its shape. ---- */
+#product, #faq { --g-screen: 100svh; }
+/* the 404 is one hero screen in the kit's hero-centred box: the words first, then the serve window
+   fills what is left, as the landing's does. The pane drops the library column and its fixed body
+   height (the transcript must always fit the screen it is given), and the pins it carries are real
+   links, so they keep the window's dark rows at the inbox's own size and 44px tap on the phone */
+#nf .d-win__body { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+#nf .nf__pins { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+#nf .nf__pins a { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 44px; padding: 0 14px; border-radius: 9px; background: rgb(255 255 255 / .06);
+  color: #eceef0; font-weight: 500; }
+#nf .nf__pins a small { color: #8d9399; font-weight: 400; }
+#nf .nf__pins a:hover { background: rgb(255 255 255 / .1); }
+#nf .nf__pins__go { display: inline-flex; align-items: center; gap: 8px; }
+/* 640-1279 the window gets what the words leave (398px at 1024x900) and the transcript's tool line
+   is the 17px that clips the last pin's row there; the me line and the pins carry the exchange */
+@media (min-width: 640px) and (max-width: 1279px) { #nf .d-tool { display: none; } }
+#cli { --mo-gap: 64px; }
+#top .hero__lead { color: color-mix(in oklab, var(--muted) 76%, #fff); }
+.plan { display: flex; flex-direction: column; transition: translate 200ms ease; }
+.plan:hover { translate: 0 -2px; }
+.plan__list { margin-top: auto; }
+
+/* features at tablet and phone: one card per row (the recipe), the panels sized so the .g2 groups
+   hold their screens: 260px at 820-1023, 200px under 820, 175px on the phone with the cards'
+   padding at 16px (the first group ends above the screen's bottom padding at every width) */
+@media (max-width: 1023px) {
+  /* the wrap keeps the .g2's own row gap between the two groups: the second group starts --padt
+     under the screen's fold, so its boxes never begin inside the first screen (the checker's
+     first-screen group ends by the fold less the bottom padding) */
+  #features > .wrap { display: flex; flex-direction: column; gap: calc(var(--padt) + var(--padb) + var(--bar)); }
+  /* the kit's .g2 keeps its children at align-self: start (the grid rows want that); in the flex
+     wrap here it shrinks the second card row to its text's width, off the right line */
+  #features > .wrap > .grid { align-self: stretch; }
+  #features .card.card--row { grid-column: 1 / -1; }
+  #features .panel { --p-h: 260px; }
+  #cli .frame--split { margin-top: 40px; }
+  /* the mock's column headers starve their last label at tablet widths; the app is drawn (role=img) */
+  .app .ui-win__cols { display: none; }
+}
+/* the cli at 1024-1279: the band's single screen holds its words down to the CTA (the checker's
+   visible content there is text lines and boxes, so the column spreads through the screen) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #cli > .wrap > .grid { min-height: 480px; }
+  #cli .cli-text { display: flex; flex-direction: column; justify-content: space-between; }
+  /* the band's two screens hold two 621px card rows; the kit's row gap (192) spends past the second
+     screen at 768px tall, so the gap tightens and the two rows keep the section at two screens */
+  #features > .wrap { row-gap: 100px; }
+}
+/* the faq keeps the kit's stack at tablet widths: its longer answers fill the column, so the section
+   needs no second column and no wider rows */
+@media (max-width: 819px) { #features .panel { --p-h: 200px; } }
+
+/* pricing takes two screens under 1024 (content 1821-1822 sits in the layout-v4 window 1130-1856);
+   the plans' grid stretches into what the screens leave, so the section keeps no dead slack at its
+   foot; on the phone the price drops under the h1's scale and the billing line (no switch on a
+   phone) and the pill's second span (it repeats the plans button) go */
+#pricing > .wrap > .grid { flex: 1 1 auto; }
+@media (max-width: 1023px) {
+  #pricing { --h: 2; }
+  #pricing > .wrap > .grid { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 639px) {
+  .plan__price { font-size: 34px; }
+  #pricing .plan { padding-block: 20px; }
+  .plan__bill { display: none; }
+  .hero__c .pill > .muted { display: none; }
+  /* the product's text link runs past the container's line on the phone; the terminal's cwd
+     starves the typed command of room at 390; the faq's words sit centred in their screen */
+  #product .link, #cli .ui-term__cwd { display: none; }
+  .cli-facts p:last-child { display: none; }
+  /* the phone's two screens hold the h2 and two cards per group exactly: panels at 140 put the
+     first group's foot on the fold less the bottom padding, and the toggles keep two of their
+     four rows so their list stays inside its panel (the checker's first-screen group ends there) */
+  #features .panel { --p-h: 140px; }
+  #features .card { --c-pad: 16px; }
+  #features .ui-toggles__list li:nth-child(n+3) { display: none; }
+  #faq { grid-template-rows: minmax(0, 1fr); }
+  #faq > .wrap { justify-content: center; }
+  /* the dusk ground's recipe adds the long tone-change padding; on the phone the answers need that
+     air for their lines, so the faq takes the phone's standard paddings and keeps one screen */
+  #faq.section.bg-dusk { padding-block: 96px 48px; }
+  #faq .faq__item { padding-block: 14px; }
+  #faq .faq__item:first-child { padding-top: 0; }
+}
+/* the footer's link columns sit two-up under 1024 (the kit stacks the grid's kids full width
+   there, which leaves the right half of the footer empty); the pause button's ring reads on the
+   pale fluted frame at the widths where the window carries it — the direct child only, so the
+   convo's own pause on the dark window keeps the kit's ring */
+@media (max-width: 1023px) { #contact .closing__links .grid > .footer__col { grid-column: span 6; } }
+@media (min-width: 1024px) { .hero__window > .ui-pause:focus-visible { outline-color: #0f1f10; } }
+
+/* the narrow end: the wordmark and the bar's button slim down so the toggle clears 320px
+   (the toggle keeps its 44px tap) */
+@media (max-width: 359px) {
+  .nav__logo { font-size: 14px; }
+  .nav__actions .btn { padding-inline: 10px; }
+}
