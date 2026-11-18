@@ -167,3 +167,36 @@ through the refactor (verified against the pre-Phase-A build, scripts and React'
   reruns after the refactor: consistency 8 FAIL (the waived set) with the same 17 WARN families,
   layout check no findings, perf 0 FAIL / 3 WARN. Gate re-armed with `--start` (the PASS had closed
   the previous build) and passed.
+
+## Phase B (2026-11-16 – 11-18): pricing, docs (+4 articles), changelog, privacy, terms
+
+Eight routes through the consistency pipeline, every page on the kit's screen grid (heroes on bg-*
+grounds, each `main > section` one or two screens). No commit/push/deploy yet.
+
+- **Content, not cuts.** The sections the first sweep read as empty grew real rows, log lines and
+  mini serve windows (serve #ask/#log, skill-file #versions, skills #rules, privacy #kept/#never/
+  #write, docs hub, terms #service/#content/#changes) until extent, air and empty-area read full.
+  Every price and beta fact stays `data-assumed`; contacts stay in `mailto:` hrefs, never in copy.
+- **The model that decoded the residuals**: a section's box is a min-height, so overflowing content
+  grows it and shifts every later section off the k×100svh grid — the SR-2/SR-4 clusters (docs @768
+  #guides 1066, privacy #never @768 and @390) were one overflow each, not six faults. Seams are A's
+  leftover + `--padb` + B's `--padt`; section-gaps fails past ±60% and warns past ±25%
+  (consistency.mjs:10863).
+- **Layout levers (page.css end block)**: the tablet padt step split — 768–819 holds only #ask and
+  #service (the other four's one-screen boxes held 1024 and the +96 pushed them past it), 820–830
+  keeps all six; #kept .panel --p-h 332 @640–830 (the toggles' 3px edge run); #write padt +64
+  @640–830 (its short form left a 444–599px footer seam). On a phone: #ask opens at 128/16 with its
+  Batch-2 rows folded away; #log/#kept/#write keep the kit's own screen padding (their forms end
+  short of the screen's foot, and the wider start is what lands the next seam on the page's gap);
+  #versions padt 64; #never padt 128 with the window's fixed demo body dropped (`#never .d-win__body
+  { min-height: 0 }` — layout/demo.css's 420px min-height was the hidden constant that made row
+  trims no-ops); the never window's rows read one line and its note waits for ≥831; the statement
+  heroes' facts return as a 2×2 at the foot.
+- **privacy #never rebuilt**: a six-row serve-log window (three rows a serve leaves, three it never
+  carries) in the right column; the per-page aside dropped there (redundant — #write keeps one),
+  which is what fixed @1440's fit and the container-edges warn.
+- **Verification**: consistency on all nine pages at 1440/1024/820/768/390 (plus first screens
+  1280/1152/896 and the 320 walk) — every page's only FAIL is the waived close-word finding; logs in
+  `.taste-skill/check-*.log`. Perf spot check on the-serve-protocol: 0 FAIL / 2 WARN. Gate re-armed
+  with `--start` and passed: no open FAIL, the three text-contrast waivers now match no open finding,
+  39 non-blocking warns.

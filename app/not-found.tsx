@@ -26,7 +26,7 @@ export default function NotFound() {
               <p className="hero__lead">The address you asked for is not pinned in this library. The page may have moved, or it was never here.</p>
               <div className="btn-row">
                 <a className="btn btn--primary" href="/">Return to the library{arrow}</a>
-                <a className="link" href={MAILTO}>Write to hello@skillfell.example</a>
+                <a className="link" href={MAILTO}>Write to us</a>
               </div>
             </div>
             <div

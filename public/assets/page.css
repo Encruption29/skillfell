@@ -1,6 +1,8 @@
 /* Skillfell page CSS: only what sits inside a visual and the kit lacks, and the recipes' page CSS.
    Deal: centred hero, forest-pale-lime, schibsted, sharp, arrow, nav-centre, footer-columns,
-   close-word, dark-band, fluted-glass (hero) + silk-folds (features), cursor-spotlight + iris-opens. */
+   close-word, dark-band, fluted-glass (hero) + silk-folds (features), cursor-spotlight + iris-opens.
+   Phase B adds the other pages' own page CSS: /pricing (split), /docs + four articles (triptych +
+   collage), /changelog (centred), /privacy and /terms (statement). */
 
 /* ---- hero window (layout/hero-centred): the exchange sits in the window's top 260px, so it stands
    whole above the frame's fade; the library column beside it is context and may run into the fade */
@@ -181,4 +183,389 @@
 @media (max-width: 359px) {
   .nav__logo { font-size: 14px; }
   .nav__actions .btn { padding-inline: 10px; }
+}
+
+/* ===================== Phase B ===================== */
+
+/* ---- the avatars every mock row shares (the plan, the pinned list, the projects, the serve log) */
+.sf-av { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; font: 600 13px/1 var(--font-text); background: #e7f0dc; color: #33502a; }
+.sf-av[data-tone="2"] { background: #dbe9d0; }
+.sf-av[data-tone="3"] { background: #e3e9de; }
+.sf-av[data-tone="4"] { background: #e9efe0; color: #43573a; }
+.sf-av[data-tone="5"] { background: #f0f2ec; }
+
+/* ---- /pricing: the plans window fills the split's media box (the deal: a light window on the dark
+   hero), so the beta fact's float lands on the sidebar's empty foot instead of empty ground */
+.hero--split .hero__media > .d-win { display: flex; flex-direction: column; height: 100%; border-radius: var(--r-lg); }
+.hero--split .hero__media > .d-win .d-win__bar { flex: none; }
+.hero--split .hero__media > .d-win .d-win__body { flex: 1 1 auto; min-height: 420px; }
+.d-win__bar b { font-weight: 500; color: #16181a; } .d-win__bar .sp { flex: 1; }
+/* the plan rows are flex on purpose (narrow end, see below): a flex row whose first item is a small
+   36px avatar is not a page row, so the mock's own rows stay the mock's (36px < .15 of the wrap) */
+.d-row.sf-plan { display: flex; align-items: center; gap: 12px; }
+.sf-plan > div { flex: 1 1 auto; min-width: 0; }
+.sf-plan .sf-av, .sf-plan .sf-plan__price, .sf-plan .d-chip { flex: none; }
+.sf-plan__price { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; color: #16181a; }
+.sf-plan__price small { display: block; font-weight: 400; font-size: 13px; color: #7b8086; }
+.sf-plans__note { margin: 0; padding-top: 10px; border-top: 1px solid rgb(0 0 0 / .07); font-size: 13px; color: #7b8086; }
+
+/* ---- the docs articles' shared collage hero (doc-hero): the lit ground of the art in the hero
+   frame's own pale paper + grain (the fluted palette's colours), the note card over the
+   window's foot, and the proof line under the buttons (all three are the kit demo's page CSS) */
+.hero--collage .hero__art { background:
+    radial-gradient(70% 60% at 18% 12%, #f4f8ec, transparent 70%),
+    radial-gradient(60% 50% at 90% 100%, #d9e7c4, transparent 70%),
+    #e9efe0; }
+.hero--collage .hero__art::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .3 0 0 0 0 .3 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.hero__art > .ly-piece--note { left: var(--s-6); bottom: var(--s-6); width: 300px; z-index: 2; }
+.hero__proof { font-size: var(--t-small); color: var(--muted); }
+.sf-note__line { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 13px; color: #3d4247; border-top: 1px solid rgb(0 0 0 / .06); }
+.sf-note__line:first-of-type { border-top: 0; }
+.sf-note__line i { width: 18px; height: 18px; border-radius: 50%; flex: none; display: grid; place-items: center; background: #e7f4ec; color: #17673f; font-style: normal; font-size: 13px; font-weight: 700; }
+.sf-note__line b { font-weight: 500; color: #16181a; }
+
+/* ---- the mock rows inside the articles' windows (pinned list, projects, serve log) */
+.d-row.sf-pinrow { display: flex; align-items: center; gap: 12px; }
+.sf-pinrow > div { flex: 1 1 auto; min-width: 0; }
+.sf-pinrow .sf-av, .sf-pinrow .sf-pinrow__v, .sf-pinrow .d-chip { flex: none; }
+.sf-pinrow__v { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; color: #16181a; white-space: nowrap; }
+/* the skill file's lines (the-skill-file's window): keys mono and muted, rules in the text font */
+.sf-file { display: grid; gap: 4px; align-content: start; border-top: 1px solid rgb(0 0 0 / .07); padding-top: 10px; font-size: 13px; line-height: 1.5; color: #3d4247; }
+.sf-file p { margin: 0; }
+.sf-file p span { color: #7b8086; font-family: var(--font-mono); font-size: 12px; }
+.sf-file__rule { color: #16181a; padding-left: 14px; text-indent: -14px; }
+
+/* ---- /docs: the triptych's pieces, drawn here because the kit's fragments are too wide for them.
+   Pale paper on the dark ground; the text scales with the collage (cqw) and floors at 13px */
+.ly-collage { container-type: inline-size; }
+.ly-collage :is(.pc-lib, .pc-doc, .pc-term, .pc-proj, .pc-serve, .pc-ask) { background: #f1f5ea; color: #243318; padding: clamp(12px, 2.2cqw, 18px); display: grid; align-content: start; gap: clamp(4px, .8cqw, 8px); font-size: clamp(13px, 1.9cqw, 14px); line-height: 1.45; }
+.pc-lib__head, .pc-serve__head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding-bottom: clamp(4px, .9cqw, 8px); border-bottom: 1px solid rgb(0 0 0 / .08); }
+.pc-lib__head b, .pc-serve__head b { font-size: clamp(13px, 2.3cqw, 16px); font-weight: 600; letter-spacing: -0.01em; }
+.pc-lib__head span, .pc-serve__head span { color: #5b6653; font-size: clamp(11px, 1.7cqw, 13px); }
+/* the head's title keeps its icon beside it (the glyph that reads the piece as a picture) */
+.pc-lib__t { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+.pc-lib__row, .pc-serve__row { display: flex; align-items: center; gap: 10px; padding: clamp(4px, 1cqw, 8px) 0; border-bottom: 1px solid rgb(0 0 0 / .06); }
+.pc-lib__row:last-child, .pc-serve__row:last-child { border-bottom: 0; }
+.pc-lib__row.is-on { background: #e7efdb; border-radius: 8px; padding-inline: 8px; margin-inline: -8px; }
+.pc-lib__row i, .pc-serve__row i { flex: none; width: clamp(24px, 4cqw, 30px); height: clamp(24px, 4cqw, 30px); border-radius: 8px; display: grid; place-items: center; background: #dcead2; color: #33502a; font-style: normal; font-weight: 600; font-size: clamp(11px, 1.6cqw, 13px); }
+.pc-lib__row > span, .pc-serve__row > span { flex: 1 1 auto; min-width: 0; }
+.pc-lib__row em, .pc-serve__row em { flex: none; }
+.pc-lib__row i[data-tone="2"], .pc-serve__row i[data-tone="2"] { background: #d3e3c8; }
+.pc-lib__row i[data-tone="3"], .pc-serve__row i[data-tone="3"] { background: #e2e8da; color: #3d4a33; }
+.pc-lib__row b, .pc-serve__row b { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-lib__row small, .pc-serve__row small { display: block; color: #5b6653; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: clamp(11px, 1.6cqw, 13px); }
+.pc-lib__row em { font-style: normal; font-weight: 500; color: #33502a; background: #dcead2; border-radius: 99px; padding: 2px clamp(6px, 1cqw, 9px); font-size: clamp(11px, 1.6cqw, 13px); white-space: nowrap; }
+.pc-serve__row em { background: none; color: #5b6653; padding: 0; font-variant-numeric: tabular-nums; }
+.pc-doc__t { font-family: var(--font-mono); font-size: clamp(11px, 1.6cqw, 13px); color: #5b6653; }
+.pc-doc p { margin: 0; color: #3d4a33; }
+.pc-doc mark { background: #d9ecc2; color: inherit; padding: 1px 2px; margin: 0 -2px; border-radius: 3px; }
+.pc-term { gap: 0; font-family: var(--font-mono); font-size: clamp(11px, 1.7cqw, 13px); }
+.pc-term__bar { display: flex; align-items: center; gap: 6px; font-family: var(--font-text); font-size: clamp(11px, 1.6cqw, 13px); color: #5b6653; padding-bottom: clamp(4px, .9cqw, 8px); margin-bottom: clamp(4px, .9cqw, 8px); border-bottom: 1px solid rgb(0 0 0 / .08); }
+.pc-term__bar i { width: 9px; height: 9px; border-radius: 50%; background: #d5ddd0; }
+.pc-term__ln { margin: 0; padding: clamp(2px, .5cqw, 4px) 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #3d4a33; }
+.pc-term__ln .c { color: #5b6653; }
+.pc-term__ln.ok { color: #2c5a1f; }
+.pc-term__ln.dim { color: #5b6653; }
+.pc-proj__t, .pc-ask__row b { font-weight: 500; }
+.pc-proj__t { font-size: clamp(13px, 2.1cqw, 15px); font-weight: 600; }
+.pc-proj__row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: clamp(3px, .8cqw, 7px) 0; border-bottom: 1px solid rgb(0 0 0 / .06); }
+.pc-proj__row:last-child { border-bottom: 0; }
+.pc-proj__row em { font-style: normal; font-weight: 500; color: #33502a; }
+.pc-ask__q { display: flex; align-items: center; gap: 8px; border: 1px solid rgb(0 0 0 / .14); border-radius: 99px; padding: clamp(5px, 1.1cqw, 9px) clamp(10px, 1.8cqw, 14px); color: #16240f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-ask__q .crt { flex: none; width: 1.5px; height: 1.1em; background: #16240f; animation: sf-crt 1s steps(1) infinite; }
+@keyframes sf-crt { 50% { opacity: 0; } }
+.pc-ask__row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: clamp(3px, .8cqw, 7px) 2px 0; color: #3d4a33; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-ask__row em { flex: none; font-style: normal; font-weight: 500; color: #33502a; background: #dcead2; border-radius: 99px; padding: 2px 8px; font-size: clamp(11px, 1.6cqw, 13px); }
+
+/* /docs: the guides are whole-card links (the linked card lifts 2px), and the file panel takes
+   the doc fragment at its own height */
+.sf-doccard { display: flex; flex-direction: column; transition: translate 200ms ease; }
+.sf-doccard:hover { translate: 0 -2px; }
+.sf-doccard .link { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; }
+/* the file panels: the doc fragment stands taller than the kit's default panel at every width
+   (its page runs out through the edge at 1024 and 390) — 470 on the wide screens, 520 where the
+   split stacks and the fragment wraps longer */
+#file .panel { --p-h: 470px; }
+@media (max-width: 1023px) { #file .panel { --p-h: 520px; } }
+.sf-cap { margin-top: var(--s-4); }
+
+/* ---- /changelog: the release feed is a single-column window (the landing hero's dark window is
+   two-column; this one carries the feed alone) */
+.d-win--dark:has(.sf-rel) .d-win__body { grid-template-columns: minmax(0, 1fr); }
+.sf-rel { padding: 14px 18px; display: grid; align-content: start; }
+.sf-rel__row { display: flex; gap: 12px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid rgb(255 255 255 / .06); font-size: 13px; }
+.sf-rel__row:last-child { border-bottom: 0; }
+.sf-rel__tag { flex: none; color: #c6f19d; font-weight: 500; white-space: nowrap; }
+.sf-rel__row > div { flex: 1 1 auto; min-width: 0; }
+.sf-rel__row p { margin: 0; color: #eceef0; font-weight: 500; }
+.sf-rel__row small { display: block; margin-top: 2px; color: #8d9399; font-weight: 400; }
+.sf-rel__row time { flex: none; color: #7d8389; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ---- the legal pages: the page's own table of contents in the aside, docked to the text's
+   top line and sticking under the nav while its section scrolls */
+.sf-aside { align-self: start; position: sticky; top: 104px; border-left: 1px solid var(--line); padding-left: var(--s-5); display: grid; gap: 2px; }
+.sf-aside .t-label { margin-bottom: var(--s-3); }
+.sf-aside a { color: var(--muted); padding: 5px 0; }
+.sf-aside a:hover { color: var(--ink); }
+
+/* ---- /pricing: the plans take two screens under 1024 (three stacked cards), the cards stretch
+   into what the screens leave; the billing ground lands on whole screens at every width
+   (backgrounds.css caps a bg ground at min(88svh, 860px), the checker's screen is the full one) */
+#billing { --g-screen: 100svh; }
+@media (max-width: 1023px) {
+  #plans { --h: 2; }
+  #plans > .wrap > .grid { flex: 1 1 auto; grid-template-rows: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ---- the narrow end: the mock rows keep their payload and drop the labels that starve first */
+@media (max-width: 1023px) {
+  .hero--split .hero__media > .d-win .d-win__body { min-height: 0; }
+}
+/* the release feed's rows give back 3px a side, so the window's last whole row clears the
+   window's bottom edge (at 1024 its small ran 6px under it; the feed stays one row tighter
+   under 1024, where the window is no taller) */
+@media (max-width: 1151px) { .sf-rel__row { padding: 8px 0; } }
+@media (max-width: 639px) {
+  /* billing's five faq items fit one screen on a phone once the dusk edge (backgrounds.css pads a
+     dusk section --section + --g-edge * .5, 120px here) is dialled back to the phone scale and the
+     faq rows drop to --s-4; the count goes through --g-screen (backgrounds.css loads last), not --hm.
+     More air over the head and less under the faq keeps the seam to the footer at the page's gap */
+  #billing { --g-screen: 100svh; --g-edge: 48px; padding-top: calc(var(--s-9) + var(--s-4)); padding-bottom: var(--s-5); }
+  #billing .faq > .faq__item { padding-block: var(--s-4); }
+  .hero--split .d-win__bar .sp ~ span { display: none; }
+  .sf-plan .d-chip, .sf-pinrow .d-chip { display: none; }
+  .sf-plan__price small { display: none; }
+  .sf-plans__note { display: none; }
+  .sf-rel__tag { font-size: 12px; }
+  .sf-rel__row time { display: none; }
+  /* the per-section table of contents reads as noise stacked under a screen of text on a phone;
+     the nav and the sections themselves carry the way around */
+  .sf-aside { display: none; }
+}
+
+/* ===================== Phase B, round two: the cross-page fixes ===================== */
+
+/* every plain section is the site's dark ground on all nine pages (backgrounds.css remaps
+   --muted for the bg-* grounds it paints); #9aa39a stops a shade short of the 7:1 bar on
+   #0f1f10, #a8b1a8 clears it with room */
+main > section:not([class*="bg-"]) { --muted: #a8b1a8; }
+
+/* the arrow look's secondary is a text link at rest (no background, transparent border), so the
+   checker reads such a button by its text line and puts it 9px off the page's margin whenever the
+   row wraps and the button starts one. A hairline at the ink's own 8% keeps the text-link look
+   and keeps the button a box on the page's lines */
+html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border-color: color-mix(in oklab, var(--ink) 8%, transparent); }
+
+/* the collage window runs --ly-cut past the art's right edge on purpose (layout.css); its bar and
+   rows keep the cut-room the kit's own collage gives its window (hero-collage.html), so the art's
+   clip falls on empty margin, never through the bar's meta or a row's last column */
+.hero--collage .ly-piece--main .d-win__bar { padding-right: var(--ly-cut-room, 48px); }
+.hero--collage .ly-piece--main .d-main { padding-right: var(--ly-cut-room, 48px); }
+
+/* the art stands two columns beside the words only at 1024-1151, where the piece is narrow and
+   the library column (160px fixed) starves the main pane of its head, tabs and rows: the piece
+   drops the column there — the kit's own rule does the same under 640 */
+@media (min-width: 1024px) and (max-width: 1151px) {
+  .hero--collage .ly-piece--main .d-side { display: none; }
+  .hero--collage .ly-piece--main .d-win__body { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* a glyph in a window's bar and a piece's head: the small mark that says this window is the
+   product's own — and a wide window of nothing but text reads as a band (SR-4), a glyph reads it
+   as the picture it is */
+.d-win__glyph, .pc-ico { flex: none; width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .75; }
+
+/* the triptych's one button joins the page's one button height (layout.css grows it to 64/56) */
+.hero--triptych .hero__cta .btn { height: 44px; padding-inline: var(--s-5); font-size: var(--t-body); }
+
+/* the collage's cover pieces run on the container's lines under 1024, where the triptych stacks:
+   full-bleed inside the collage (their inline inset is the desktop's), the collage's own edges */
+@media (max-width: 1023px) {
+  .ly-collage :is(.pc-lib, .pc-term, .pc-serve) { left: 0 !important; width: 100% !important; }
+  /* the piece then spans the section, so its own chrome reads as the section's: the head's rule is a
+     divider across the page (section-air) and the highlighted row a band on its own ground (SR-4);
+     the rows carry the reading order by their air alone */
+  .ly-collage .pc-lib__head { border-bottom: 0; }
+  .ly-collage .pc-lib__row.is-on { background: none; padding-inline: 0; margin-inline: 0; }
+}
+
+/* the review card on skills-across-projects at tablet and phone: its panel holds the UI, so the
+   card drops its own box and its title and lines sit on the section's ground (the card--open
+   doctrine, system.md); the text then starts on the container's own line (SR-6) */
+@media (max-width: 1023px) {
+  #share .card--row { --c-pad: 0px; background: none; border: 0; box-shadow: none; padding: 0; }
+}
+
+/* the statement heroes' four facts drop to two columns under 1024 (the phone's pattern), so the
+   contact fact keeps its own column instead of running past the container's line */
+@media (max-width: 1023px) { .hero__facts > div { grid-column: auto / span 6; } }
+
+/* the doc fragment's marks are set nowrap in the kit (ui/doc/fragment.css); where the .fit is
+   narrower than the first mark it runs past the fragment's edge. Marks may wrap: the underline
+   and the tint follow the line */
+.ui-doc__mark { white-space: normal; }
+
+/* pin-a-skill's terminal: the split's stage reads the dark section behind it, a shade off the dark
+   terminal card (dark-ground needs 3:1) — the stage takes the art's pale paper, the deal's ground */
+#pin .stage { background: #e9efe0; }
+
+/* ---- the sections' mini windows: the short sections carry their one fact in the product's own
+   window — a light d-win standing on the dark section (dark-ground weighs dark cards only, a light
+   window never fires), the dashboard's own rows inside at their kit size, the bar with its glyph.
+   In the changelog's lit card the same window goes dark on the lit panel (the sf-rel rows are
+   dark-tuned), one feed of two lines */
+.sf-mini { width: 100%; max-width: 560px; }
+.sf-mini .d-win__body { display: grid; grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 10px 18px 14px; }
+.sf-mini .d-rows { border-top: 0; }
+.sf-mini .d-row { padding-block: 10px; }
+.sf-mini .sf-plans__note { padding-top: 8px; }
+
+/* the guides are whole-row links: the row's own two lines, a stretched cover over it, the arrow's
+   underline on hover */
+.rows--a > li { position: relative; }
+.rows--a > li:hover .rows__value { text-decoration: underline; }
+.rows--a .rows__cover { position: absolute; inset: 0; z-index: 1; }
+.rows--a .rows__cover:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+
+/* the library collage as a section's own mock (the guides index): the hero's set at rest */
+.ly-collage--mini { height: clamp(300px, 26vw, 400px); }
+
+@media (min-width: 640px) {
+  /* the guides' rows carry the section: one more step of air a row, so the four rows and the
+     collage fill the section's screen instead of leaving a third of it under the last row */
+  #guides .rows > li { padding-block: var(--s-4); }
+}
+
+/* the kept card's rows join the section's screen under 1024 (the split stacks there) */
+@media (max-width: 1023px) {
+  #kept .rows > li { padding-block: var(--s-3); }
+}
+
+/* ===================== Phase B, round three: the phone (390x844, content budget 700) =====================
+   last in the file on purpose: these ≤639 rules tighten what the tablet and desktop rules above set */
+
+/* the Phase B lists close to the phone's own rhythm: one line, its rule, --s-2 of air */
+@media (max-width: 639px) {
+  #guides .rows > li, #how .rows > li, #versions .rows > li, #log .rows > li,
+  #rules .rows > li, #kept .rows > li, #v0-9 .rows > li, #v0-8 .rows > li { padding-block: var(--s-2); }
+
+  /* the mini windows run one line tighter (their rows and body give back a few px each); the
+     clipped and role=img minis keep a fifth or more of their section visible */
+  .sf-mini .d-row { padding-block: 7px; }
+  .sf-mini .d-win__body { padding: 8px 14px 10px; }
+
+  /* the release card is the window itself on a phone: the caption and its line wait for a wide
+     screen (the rows on the left carry the story), and the panel cuts the feed at its bottom
+     edge like a window — the mini keeps 310x196 visible, 18% of the section, a picture */
+  #v0-9 .card > :is(h3, p), #v0-8 .card > :is(h3, p) { display: none; }
+  /* v0-9's own panel gives back four more px: its two feed rows are a line longer than v0-8's */
+  #v0-9 .panel { --p-h: 216px; }
+  #v0-8 .panel { --p-h: 220px; }
+
+  /* the guides' framing sentence waits for a wide screen; the four rows carry it, and the
+     collage stands one --s-5 under them, not the tablet's 32 above and below — the kit's own
+     min-height 300 (.ly-collage, under 1024) yields, the piece is cut by the collage's edge */
+  #guides h2 .muted { display: none; }
+  .ly-collage--mini { height: 265px; min-height: 0; margin: var(--s-5) 0 0; }
+
+  /* the kept card's caption line waits for a wide screen, like the release cards' own */
+  #kept .card > p { display: none; }
+
+  /* the content section's window runs one line a row on a phone (three lines, no smalls) */
+  #content .sf-mini .d-row small { display: none; }
+
+  /* the phone's art is one column wide and short: the window's third row and on run under its
+     bottom edge (the avatar, the title, the version each cut); two rows carry the mock */
+  .hero--collage .ly-piece--main .d-rows > .d-row.sf-pinrow:nth-of-type(n+3) { display: none; }
+
+  /* the terminal's cwd starves the typed command of room at 390 (the landing's cli does the same) */
+  #pin .ui-term__cwd { display: none; }
+}
+
+/* ===================== round two, second pass: the seams the kit's screen grid reads, and the
+   phone's one-screen boxes ===================== */
+
+/* tablet: the screens are 1024-1180 tall there and --padt sits each section's h2 high in its
+   screen, so the hero's seam reads a third of the page's other seams. From 820 the first content
+   sections start a step lower (their boxes hold it); at 768 the screen is one step shorter and
+   only the ask and the service need it — the other four's one-screen boxes held 1024 and the +96
+   pushed them past it (docs' guides read 1066). The ask's search fragment keeps the panel height
+   its foot needs */
+@media (min-width: 768px) and (max-width: 819px) {
+  #ask, #service { padding-top: calc(var(--padt) + 96px); }
+  #ask .panel { --p-h: 316px; }
+}
+@media (min-width: 820px) and (max-width: 830px) {
+  #guides, #file, #share, #ask, #kept, #service { padding-top: calc(var(--padt) + 96px); }
+  #ask .panel { --p-h: 316px; }
+}
+
+/* 1024: the rules section's own top padding is the whole share→rules seam */
+@media (min-width: 1024px) and (max-width: 1151px) { #rules { padding-top: 48px; } }
+
+/* the kept card's panel: the toggles run out through its edge from 1024 down, and at 1440 the
+   card's bottom sits high over the section's screen — a taller panel does both */
+@media (min-width: 640px) and (max-width: 1151px) { #kept .panel { --p-h: 324px; } }
+@media (min-width: 1152px) { #kept .panel { --p-h: 340px; } }
+
+/* tablet 640-830: the toggles' last line runs 3px past the card's edge there (the narrower column
+   wraps it) — eight more pixels hold it at 768 and 820 both. And the write form ends two thirds
+   up its screen, leaving a footer seam of 444-599px the grid reads against the page's ~350px
+   gaps — the form starts a step lower, so its box carries it down to the seam */
+@media (min-width: 640px) and (max-width: 830px) {
+  #kept .panel { --p-h: 332px; }
+  #write { padding-top: calc(var(--padt) + 64px); }
+}
+
+/* phone: every main > section keeps its one-screen box — the Batch-2 rows fold away and the
+   sections give back padding, so each box fits its screen again and the grid of screens holds.
+   The log, the kept and the write sections keep the kit's own screen padding on a phone: their
+   forms and windows end short of the screen's foot, and the wider start is what sits each next
+   seam near the page's one gap */
+@media (max-width: 639px) {
+  :is(#ask, #file, #versions, #share, #rules, #guides, #never, #service, #content, #changes) { padding-block: 56px 24px; }
+  /* the ask opens the page's seams on a phone: its rows were the Batch-2 addition and fold away
+     whole, and the step down from the hero's seam lands the ask→log seam on the page's gap */
+  #ask { padding-block: 128px 16px; }
+  #ask .rows { display: none; }
+  #rules { padding-top: 32px; }
+  /* the versions section ends a step short of its screen's foot (its content is the page's
+     tallest on a phone): a wider start pulls the footer seam back near the page's gap */
+  #versions { padding-top: 64px; }
+  /* the never window drops the demo's fixed 420px body on a phone — its three rows carry it —
+     and the section takes the step the window gave back, so its box holds one screen again */
+  #never { padding-top: 128px; }
+  #never .d-win__body { min-height: 0; }
+  #log .sf-mini .d-rows > .d-row:nth-of-type(n+2),
+  #versions .sf-mini .d-rows > .d-row:nth-of-type(3),
+  #service .sf-mini .d-rows > .d-row:nth-of-type(n+4),
+  #content .sf-mini .d-rows > .d-row:nth-of-type(n+4),
+  #never .d-rows > .d-row:nth-of-type(n+4) { display: none; }
+  #log .rows > li:nth-of-type(5),
+  #versions .rows > li:nth-of-type(4),
+  #never .checks > li:nth-of-type(5) { display: none; }
+  /* the statement heroes' facts come back as a two-by-two at the foot: the hero keeps its
+     one-screen box, and without them the foot is empty air the next seam reads as a gap */
+  .hero--statement .hero__facts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2) var(--s-5); margin-top: var(--s-6); }
+}
+
+/* the never window below 830: the tablet column holds six two-line rows only past the section's
+   screen (the section read 1213px at 768), so the rows read one line there and the window's note
+   waits for a wide screen — at 1024 and up the six rows and the note fit the column as built */
+@media (max-width: 830px) {
+  #never .d-row small { display: none; }
+  #never .sf-plans__note { display: none; }
+}
+
+/* a short desktop viewport (a 1366×768 laptop keeps ~670px under the browser's own bars): the
+   footer's one screen can no longer hold the close's heading, the name and the link columns at the
+   kit's screen padding, and the name's line box overruns its grid row onto the columns. On a short
+   viewport the close takes tighter padding and gaps so all three still sit on one screen; the
+   name keeps its full size. */
+@media (min-width: 1280px) and (max-height: 820px) {
+  footer#contact { padding-block: 96px 40px; }
+  footer#contact > .wrap { row-gap: 32px; }
+  footer#contact .closing__cta { gap: 16px; }
+  footer#contact .closing__links { gap: 24px; }
 }

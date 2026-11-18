@@ -1,14 +1,15 @@
 /*
   Site chrome — the nav and the footer every Skillfell page shares (Phase A of the multi-page
-  plan). The markup is byte-identical to the landing's own nav/footer. Pages pass home on the
-  landing only: there the links stay #anchors (the sections live on that page); everywhere else
-  they point at the landing's sections across pages (/#product), so no link promises a section
-  the current page does not hold.
+  plan). Pages pass home on the landing only: there the anchor links stay in-page (the sections
+  live on that page); everywhere else they point at the landing's sections across pages (/#product),
+  so no link promises a section the current page does not hold. Phase B: the nav's Pricing item
+  and the footer's Plans column point at the real /pricing page, the footer gains a Resources
+  column (docs, changelog, privacy, terms), and pages can mark their nav item aria-current.
 */
 
 export const MAILTO = "mailto:hello@skillfell.example";
 
-type ChromeProps = { home?: boolean };
+type ChromeProps = { home?: boolean; current?: "pricing" };
 
 export const arrow = (
   <svg className="m-arrow" viewBox="0 0 12 12" aria-hidden="true">
@@ -23,7 +24,7 @@ const navChevron = (
   </svg>
 );
 
-export function SiteNav({ home = false }: ChromeProps) {
+export function SiteNav({ home = false, current }: ChromeProps) {
   const a = (id: string) => (home ? `#${id}` : `/#${id}`);
   return (
     <header className="nav nav--centre">
@@ -49,7 +50,7 @@ export function SiteNav({ home = false }: ChromeProps) {
             </div>
           </div>
           <div className="nav__item"><a className="nav__link" href={a("features")}>Features</a></div>
-          <div className="nav__item"><a className="nav__link" href={a("pricing")}>Pricing</a></div>
+          <div className="nav__item"><a className="nav__link" href="/pricing" aria-current={current === "pricing" ? "page" : undefined}>Pricing</a></div>
           <div className="nav__item"><a className="nav__link" href={a("faq")}>FAQ</a></div>
         </nav>
         <div className="nav__actions">
@@ -66,7 +67,7 @@ export function SiteNav({ home = false }: ChromeProps) {
 export function SiteFooter({ home = false }: ChromeProps) {
   const a = (id: string) => (home ? `#${id}` : `/#${id}`);
   return (
-    <footer className="footer closing" id="contact" aria-labelledby="close-h">
+    <footer className="footer closing g2m" id="contact" aria-labelledby="close-h">
       <div className="wrap">
         <div className="closing__cta close--word">
           <div className="section-head--split">
@@ -80,17 +81,21 @@ export function SiteFooter({ home = false }: ChromeProps) {
         </div>
         <div className="closing__links">
           <div className="grid">
-            <div className="span-4 stack-4">
+            <div className="span-3 stack-4">
               <a className="nav__logo" href={home ? "#top" : "/"}>Skillfell</a>
               <p className="footer__lede">One library for the skills your coding agents share.</p>
             </div>
-            <div className="span-4 footer__col">
+            <div className="span-3 footer__col">
               <h3>Product</h3>
               <ul><li><a href={a("product")}>Library</a></li><li><a href={a("features")}>Features</a></li><li><a href={a("cli")}>Terminal</a></li></ul>
             </div>
-            <div className="span-4 footer__col">
+            <div className="span-3 footer__col">
               <h3>Plans</h3>
-              <ul><li><a href={a("pricing")}>Pricing</a></li><li><a href={a("faq")}>Questions</a></li><li><a href={MAILTO}>Contact</a></li></ul>
+              <ul><li><a href="/pricing">Pricing</a></li><li><a href={a("faq")}>Questions</a></li><li><a href={MAILTO}>Contact</a></li></ul>
+            </div>
+            <div className="span-3 footer__col">
+              <h3>Resources</h3>
+              <ul><li><a href="/docs">Docs</a></li><li><a href="/changelog">Changelog</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li></ul>
             </div>
           </div>
           <div className="footer__legal">

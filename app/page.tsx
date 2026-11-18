@@ -147,7 +147,7 @@ function Features() {
               <h3>Logs every agent's serve</h3>
               <p>The log shows which agent took which skill, and which version it got.</p>
               <div className="panel panel--flush" data-fx="silk-folds" data-fx-seed="21" data-fx-params='{"drift":0}'>
-                <div className="stage stage--fade-b"><div className="at-rise fit" style={{ "--fit-max": "380px", "--ax": "32px", "--ay": "calc(100% - 180px)", "--ay-sm": "calc(100% - 180px)" } as CSSProperties} data-ui-loop>
+                <div className="stage stage--fade-b"><div className="at-rise fit" style={{ "--fit-max": "380px", "--ax": "32px", "--ay": "calc(100% - 180px)", "--ay-sm": "calc(100% - 180px)" } as CSSProperties}>
                   <div className="ui ui-notify" data-ui="notify">
                     <ul className="ui-notify__list" data-notify-list>
                       <li className="ui-note"><span className="ui-agent ui-note__av" aria-hidden="true"></span><span className="ui-note__text"><span className="ui-note__title">opencode · code-review v3<time>now</time></span><span className="ui-note__body">acme-web, two commits reviewed</span></span><span className="ui-btn ui-btn--sm ui-note__btn">Open</span></li>
@@ -336,7 +336,7 @@ function Faq() {
         <div className="grid">
           <div className="span-5">
             <h2 id="faq-h">Questions</h2>
-            <a className="link" href={MAILTO}>Write to hello@skillfell.example</a>
+            <a className="link" href={MAILTO}>Write to us</a>
           </div>
           <div className="faq span-6 start-7">
             {items.map(([q, a]) => (
