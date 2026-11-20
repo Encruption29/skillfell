@@ -200,3 +200,42 @@ grounds, each `main > section` one or two screens). No commit/push/deploy yet.
   `.taste-skill/check-*.log`. Perf spot check on the-serve-protocol: 0 FAIL / 2 WARN. Gate re-armed
   with `--start` and passed: no open FAIL, the three text-contrast waivers now match no open finding,
   39 non-blocking warns.
+
+## Phase C (2026-11-19 – 11-20): blog (+3 notes), about, contact — live
+
+Six routes: `/blog`, the three notes, `/about`, `/contact` (16 routes + 404 in the build). All on
+the Phase A/B chrome; only `public/assets/page.css` touched among the kit files.
+
+- **The notes are product explanations, not a diary.** No dates, no bylines; reading time is the
+  only measure. Topics: pinning a skill across four projects, what the serve protocol sends, and
+  reviewing an agent's diff. Each note is a statement hero (`app/blog/note-hero.tsx`, shared) plus
+  two sections on the kit's screen grid, with the product's own window as the visual. The hub
+  (`/blog`) is the index: three whole-row links beside the notes window, then the four skills the
+  notes quote, so the examples have a shelf behind them before `/skills`.
+- **Section ids renamed where the notes repeat the landing's**: `#ask` → `#serve-ask`, `#pin` →
+  `#follow`, `#write` → `#message`; the phone padding rules target section ids, so a collision
+  would have refitted an unrelated page. Every Phase C section uses the phone pattern
+  `padding-block: 56px 24px` and folds only the rows/notes a 844px screen cannot hold; the phone
+  sections now measure exactly 844 and the fixed checkers read `section-height` clean.
+- **Contact is static, one address, no form.** The page prints no address: both buttons are
+  `mailto:` links, the draft window shows “Skillfell” in the To line, and the copy says the button
+  fills the address. The seven-phase plan's static-mailto default survived review unchanged.
+- **The review note's card** (finding): the checklist card drops its own box at ≤1023 (the kit's
+  open card), its panel takes `--p-h: 304px` under 1280 and the stacked columns centre in their
+  screen at 640–1023. The rule's doc panel keeps three paragraphs under 1440 and two on a phone,
+  so the panel always cuts between lines; the note naming the pin's payoff shows only ≥640.
+- **Phase B row bug found during the sweep** (subtitle concatenation, “Pin a skillPut a version”):
+  the kit's rows write the name and its `small` on two lines, which Skillfell's pages never did.
+  Fixing it globally grew the Phase B lists past their fitted screens (changelog @390 875px, docs
+  #pin/#log/#rules/#versions @768/390, privacy #write @768). The rule is scoped to the Phase C
+  sections; the Phase B fix is a separate patch if wanted.
+- **Verification**: consistency on the six pages at 1440/1024/820/768/390 — every page's only FAIL
+  is the waived `close-word` (hub 5/29, pinning 5/32, serve 5/29, review 5/32, about 5/29, contact
+  5/35, FAIL/WARN); 320 walk 0 FAIL on all six; the Phase B sweep re-ran (9 pages) with only the
+  same waived findings; gate re-armed and `GATE: PASS` (43 non-blocking WARN). Two `section-air`
+  findings at docs @820 (pin 641px, skill-file 610px) reproduce on the b940203 baseline, so they
+  are pre-existing, not Phase C.
+- **Deployed**: commit `625a1c2` on `main`; Vercel production `skillfell.vercel.app` serves all 16
+  routes + 404 (verified). Branch previews are SSO-protected (`skillfell-git-<branch>-…vercel.app`).
+  `plan.md` and `.taste-skill/checkpoint.md` are the handoff; Phase D (`/skills` catalog, no
+  detail pages) is next.
