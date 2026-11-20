@@ -5,11 +5,13 @@
   so no link promises a section the current page does not hold. Phase B: the nav's Pricing item
   and the footer's Plans column point at the real /pricing page, the footer gains a Resources
   column (docs, changelog, privacy, terms), and pages can mark their nav item aria-current.
+   Phase C: Docs joins the nav, the footer's Resources column carries Docs, Blog, Changelog and
+   About, Contact points at /contact, and the legal pages move to the legal row beside the copyright.
 */
 
 export const MAILTO = "mailto:hello@skillfell.example";
 
-type ChromeProps = { home?: boolean; current?: "pricing" };
+type ChromeProps = { home?: boolean; current?: "pricing" | "docs" };
 
 export const arrow = (
   <svg className="m-arrow" viewBox="0 0 12 12" aria-hidden="true">
@@ -50,6 +52,7 @@ export function SiteNav({ home = false, current }: ChromeProps) {
             </div>
           </div>
           <div className="nav__item"><a className="nav__link" href={a("features")}>Features</a></div>
+          <div className="nav__item"><a className="nav__link" href="/docs" aria-current={current === "docs" ? "page" : undefined}>Docs</a></div>
           <div className="nav__item"><a className="nav__link" href="/pricing" aria-current={current === "pricing" ? "page" : undefined}>Pricing</a></div>
           <div className="nav__item"><a className="nav__link" href={a("faq")}>FAQ</a></div>
         </nav>
@@ -91,16 +94,16 @@ export function SiteFooter({ home = false }: ChromeProps) {
             </div>
             <div className="span-3 footer__col">
               <h3>Plans</h3>
-              <ul><li><a href="/pricing">Pricing</a></li><li><a href={a("faq")}>Questions</a></li><li><a href={MAILTO}>Contact</a></li></ul>
+              <ul><li><a href="/pricing">Pricing</a></li><li><a href={a("faq")}>Questions</a></li><li><a href="/contact">Contact</a></li></ul>
             </div>
             <div className="span-3 footer__col">
               <h3>Resources</h3>
-              <ul><li><a href="/docs">Docs</a></li><li><a href="/changelog">Changelog</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li></ul>
+              <ul><li><a href="/docs">Docs</a></li><li><a href="/blog">Blog</a></li><li><a href="/changelog">Changelog</a></li><li><a href="/about">About</a></li></ul>
             </div>
           </div>
           <div className="footer__legal">
             <span>© 2026 Skillfell</span>
-            <div className="socials"></div>
+            <span className="footer__legal-links"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
           </div>
         </div>
       </div>

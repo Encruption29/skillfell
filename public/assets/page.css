@@ -406,9 +406,10 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
    and the tint follow the line */
 .ui-doc__mark { white-space: normal; }
 
-/* pin-a-skill's terminal: the split's stage reads the dark section behind it, a shade off the dark
-   terminal card (dark-ground needs 3:1) — the stage takes the art's pale paper, the deal's ground */
-#pin .stage { background: #e9efe0; }
+/* the pin's terminal: the split's stage reads the dark section behind it, a shade off the dark
+   terminal card (dark-ground needs 3:1) — the stage takes the art's pale paper, the deal's ground
+   (the pin guide sets the same paper under the same terminal) */
+#pin .stage, #follow .stage { background: #e9efe0; }
 
 /* ---- the sections' mini windows: the short sections carry their one fact in the product's own
    window — a light d-win standing on the dark section (dark-ground weighs dark cards only, a light
@@ -568,4 +569,201 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
   footer#contact > .wrap { row-gap: 32px; }
   footer#contact .closing__cta { gap: 16px; }
   footer#contact .closing__links { gap: 24px; }
+}
+
+/* ===================== Phase C ===================== */
+
+/* ---- the kit's rows write a name and its small as two lines (layout/hero-place and hero-film set
+   exactly this); Skillfell's page CSS never did, so the notes' rows read "Pin a skillPut a version...".
+   Scoped to the Phase C sections: the Phase B pages were fitted with their smalls inline, and a
+   block line there grows lists past their screens (the sweep's section-height fails). */
+:is(#notes, #skills, #drift, #follow, #serve-ask, #answer, #rule, #finding, #why, #principles, #message, #after) .rows .rows__name small {
+  display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small);
+}
+
+/* ---- the footer's legal row: copyright left, the two legal pages right (the empty socials well is
+   gone, so the row has two ends again) */
+.footer__legal-links { display: inline-flex; align-items: center; gap: var(--s-5); }
+.footer__legal-links a:hover { color: var(--action); }
+
+/* ---- /contact: the draft in the window. Three fields and the message, on the light window the other
+   mocks use; the note under it says what the page does (it opens the mail app, it posts nothing). */
+.sf-mail { display: grid; }
+.sf-mail__field { display: flex; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgb(0 0 0 / .07); font-size: 13px; line-height: 1.5; }
+.sf-mail__field + .sf-mail__field { padding-top: 10px; }
+.sf-mail__k { flex: none; width: 56px; color: #7b8086; }
+.sf-mail__v { min-width: 0; color: #16181a; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sf-mail__body { display: grid; gap: 8px; padding-top: 12px; font-size: 13px; line-height: 1.6; color: #3d4247; }
+.sf-mail__body p { margin: 0; }
+
+/* the notes' lists close to the phone's rhythm, as the guides and the kept rows do; the checks
+   in the about's five rules take the same tighter step */
+@media (max-width: 639px) {
+  #principles .checks { gap: var(--s-2); }
+}
+
+/* ---- the note rows may carry a drawn arrow after the value (the notes index): the kit's svg is a
+   block, so the arrow dropped onto its own line under "4 min"; it sits inline beside the value */
+.rows__value i { display: inline-flex; margin-left: var(--s-2); vertical-align: -1px; }
+
+/* ---- the review's SKILL.md is a picture, not the doc demo: the demo's popover would sit over the
+   text it explains, so the note stays hidden and the page takes the width the note held */
+#rule .ui-doc { width: 100%; padding-right: 0; }
+#rule .ui-doc__note { display: none; }
+
+/* ===================== Phase C, the tablet and the phone =====================
+   The notes' sections carry more than the guides' (a lead, four or five rows and a window on
+   one screen), so at and under 1023 the pieces that repeat the page's story fold away: the serve
+   log in the answer (the receipt card keeps the line and the three things it never carries),
+   the review's row list (the five-step card stays) and the pin terminal's ground takes a
+   shorter frame. */
+.sf-receipt { display: grid; gap: var(--s-2); }
+.sf-receipt__line { display: none; }
+.sf-receipt__never { display: grid; gap: var(--s-2); }
+.sf-receipt__foot { display: none; }
+@media (max-width: 1023px) {
+  #answer .d-win { display: none; }
+  #finding .rows { display: none; }
+
+  /* the review's card drops its box where the columns stack: its title and line sit on the page
+     ground over the checklist (the kit's open card), so the text starts on the container's left */
+  #finding .card.card--row { --c-pad: 0px; background: none; border: 0; box-shadow: none; padding: 0; overflow: visible; }
+  #finding .card.card--row > .panel { margin: var(--s-5) 0 0; border-radius: var(--r-lg); }
+
+  /* the receipt card: the line a serve leaves stands over the three things it never carries,
+     drawn as the product's window on the dark ground */
+  .sf-receipt {
+    background: #fff; color: #16181a; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / .07), 0 24px 60px -28px rgb(0 0 0 / .45);
+    gap: 0;
+  }
+  .sf-receipt__line { display: block; }
+  .sf-receipt__line .d-win__body { display: block; min-height: 0; padding: 2px 14px 0; }
+  .sf-receipt__line .d-rows { border-top: 0; }
+  .sf-receipt__line .d-row { padding-block: 8px; }
+  .sf-receipt__never { padding: 10px 14px 0; }
+  .sf-receipt__never .t-label { margin: 0; color: #5d6268; }
+  .sf-receipt__foot {
+    display: flex; align-items: flex-end; gap: 3px;
+    height: 42px; padding: 14px 14px 12px; border-top: 1px dashed rgb(0 0 0 / .2);
+  }
+  .sf-receipt__foot i { flex: none; width: 2px; height: 16px; background: #16181a; }
+  .sf-receipt__foot i:nth-child(3n) { width: 4px; }
+  .sf-receipt__foot i:nth-child(4n+1) { width: 1px; }
+  .sf-receipt__foot i:nth-child(5n+2) { height: 12px; }
+  .sf-receipt__foot i:nth-child(7n+3) { height: 14px; }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  #follow .frame--split { --ratio: 48%; margin-top: 20px; }
+  /* the review's stacked columns centre in their screen: the words sit at the top of the middle
+     third and the picture at the bottom of it, so neither section leaves a hole under its foot */
+  #rule .wrap.grid, #finding .wrap.grid { align-content: center; }
+  /* the notes' library window fills the screen the notes' list leaves: its three rows take a
+     step more air a row, so the section's content reaches the foot of its screen instead of
+     leaving a third of it empty (the list and the window keep the same top) */
+  #notes .d-win__body { padding-block: 16px 24px; }
+  #notes .d-win .d-row { padding-block: 30px; }
+}
+/* at 1024 the two columns leave the doc 344px of text: three paragraphs end on the panel's
+   foot, so the panel takes the height the 1440 layout gives it (325) and the SKILL.md reads
+   as a page cut by the panel's edge, not as a page that stops early; from 1120 the wider
+   column holds the three paragraphs in the natural panel again */
+@media (min-width: 1024px) and (max-width: 1119px) {
+  #rule .panel { --p-h: 325px; }
+}
+/* the doc is a picture: below 1440 it keeps the three paragraphs the panel can hold, so it is
+   cut between lines, never through one (the phone keeps two; see below) */
+@media (max-width: 1439px) {
+  #rule .ui-doc__text:nth-child(n+6) { display: none; }
+}
+/* the five-step checklist is 270 tall and the ask's search 250: their panels give them the
+   slack they need wherever the kit's clamp is still at its 264px floor (every width under 1280) */
+@media (max-width: 1279px) {
+  #finding .panel { --p-h: 304px; }
+  #serve-ask .panel { --p-h: 288px; }
+}
+
+/* on a phone the notes take the guides' own screen padding (56/24) and one line of air a row,
+   so every section holds its 844px screen again; the windows show the rows that fit and the
+   lists keep the facts the screen has room for */
+@media (max-width: 639px) {
+  :is(#notes, #skills, #drift, #follow, #serve-ask, #answer, #rule, #finding, #why, #principles, #message, #after) { padding-block: 56px 24px; }
+  :is(#notes, #skills, #drift, #follow, #serve-ask, #answer, #rule, #finding, #why, #principles, #message, #after) .rows > li { padding-block: 6px; }
+
+  /* the review's SKILL.md is a picture: on a phone the page keeps its first two paragraphs,
+     so the panel cuts between lines (not through one) and the rule stays whole */
+  #rule .ui-doc__text:nth-child(n+5) { display: none; }
+
+  /* the rule's note names the pin's payoff on the wide screens; the phone's screen is full */
+  #rule .sf-rule__note { display: none; }
+
+  /* the ask's list keeps the name and the version — the note folds away — and the window takes
+     the screen's foot, so the ask closes on its own step and the answer starts on the next */
+  #serve-ask .rows > li:nth-of-type(3) { display: none; }
+  #serve-ask { padding-bottom: 28px; }
+  #serve-ask .wrap.grid { align-content: space-between; }
+
+  /* the windows keep the rows a phone's screen has room for (three repos, three skills, three
+     rules) and the note only where every row above it still shows */
+  #skills .d-rows > .d-row:nth-of-type(4),
+  #drift .d-rows > .d-row:nth-of-type(4),
+  #drift .sf-plans__note,
+  #principles .d-rows > .d-row:nth-of-type(4),
+  #principles .d-rows > .d-row:nth-of-type(5),
+  #principles .sf-plans__note,
+  #after .sf-plans__note { display: none; }
+
+  /* the drift's five blocks close four px a gap: the lead is the page's longest and the section
+     keeps its screen without dropping the window's note */
+  #drift > .wrap { row-gap: 12px; }
+  #drift > .wrap > .span-5 > * + * { margin-top: 12px; }
+
+  /* the pin's list keeps the shelf and the pin; the terminal names the move (4 updated) */
+  #follow .rows > li:nth-of-type(n+3) { display: none; }
+
+  /* the pin's terminal takes the screen's foot: the words keep their top line, the frame its
+     bottom one, so the section closes on the paper instead of leaving a third of a screen of
+     air under it; the header already names acme-web, so the prompt drops the folder and the
+     command fits the pane whole */
+  #follow { padding-bottom: 8px; }
+  #follow .wrap.grid { align-content: space-between; }
+  #follow .ui-term__cwd { display: none; }
+
+  /* the answer closes on its card: the receipt keeps the section's foot, and the footer's own
+     top padding carries the gap to the closing call; on a phone the card keeps its bar and the
+     three things the line never carries — the receipt's own row is the one the lead already tells */
+  #answer { padding-bottom: 8px; }
+  #answer .wrap.grid { align-content: space-between; }
+  .sf-receipt__line .d-win__body { display: none; }
+
+  /* the answer's list keeps the copy and its lifetime; the checks name the receipt and the flag */
+  #answer .rows > li:nth-of-type(2), #answer .rows > li:nth-of-type(4) { display: none; }
+
+  /* the review's rule takes six pixels off its top and gives them to the finding: the section
+     keeps its screen, and the finding starts on the next one; the finding closes on its card */
+  #rule { padding-block: 50px 30px; }
+  #finding { padding-block: 50px 26px; }
+  #finding .wrap.grid { align-content: space-between; }
+
+  /* the finding's list keeps the rule the review starts from, and its card closes on the screen's
+     foot */
+  #finding .rows { display: block; }
+  #finding .rows > li:nth-of-type(n+2) { display: none; }
+
+  /* the about and the contact close on their windows: the last section's content keeps the
+     screen's foot, so the gap to the closing call is the footer's own top padding */
+  #principles, #after { padding-bottom: 32px; }
+  #principles .wrap.grid, #after .wrap.grid { align-content: space-between; }
+
+  /* the contact's last screen runs its text four px a gap tighter, so the reply log keeps the
+     section's foot with the 56/24 screen padding */
+  #after .span-5 > * + * { margin-top: 12px; }
+
+  /* the rule's five checks run one step tighter, so the doc's panel stays inside the screen */
+  #rule .checks { gap: var(--s-2); }
+
+  /* the contact draft keeps its fields and its two paragraphs; the muted line under the button
+     says what the button does (it opens your mail app, nothing is posted), so the body waits for
+     a wider screen and the signature with it */
+  #message .sf-mail__body { display: none; }
 }

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <SiteNav />
+      <SiteNav current="docs" />
       <main id="top">
         <DocHero
           id="hero-h"

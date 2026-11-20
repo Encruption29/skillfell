@@ -152,7 +152,7 @@ function TheFile() {
 export default function Page() {
   return (
     <>
-      <SiteNav />
+      <SiteNav current="docs" />
       <main id="top">
         <Hero />
         <Guides />
