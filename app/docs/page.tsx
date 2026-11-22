@@ -153,7 +153,7 @@ export default function Page() {
   return (
     <>
       <SiteNav current="docs" />
-      <main id="top">
+      <main id="top" className="page-docs">
         <Hero />
         <Guides />
         <TheFile />

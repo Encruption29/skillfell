@@ -451,6 +451,20 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
   #guides .rows > li, #how .rows > li, #versions .rows > li, #log .rows > li,
   #rules .rows > li, #kept .rows > li, #v0-9 .rows > li, #v0-8 .rows > li { padding-block: var(--s-2); }
 
+  /* the pin page's how list ends on its mini window: four px a row keeps the window's foot in
+     the section's screen and lifts the how→pin seam back toward the page's median */
+  #how .rows > li { padding-block: var(--s-1); }
+  #how .rows > li:first-child { padding-top: 0; }
+
+  /* the share page's card holds the checklist mock: a taller panel fills the phone's screen and
+     settles the share→rules seam (264 read 241px against a 129 median); the mock centres in it */
+  #share .panel { --p-h: 378px; }
+  #share .stage > .at-rise { --ay-sm: calc(50% - 133px) !important; }
+
+  /* the versions list gives back the six px its mini window's foot needs past the section's
+     796px content line (798 before) */
+  #versions .rows > li { padding-block: 7px; }
+
   /* the mini windows run one line tighter (their rows and body give back a few px each); the
      clipped and role=img minis keep a fifth or more of their section visible */
   .sf-mini .d-row { padding-block: 7px; }
@@ -519,6 +533,30 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
   #write { padding-top: calc(var(--padt) + 64px); }
 }
 
+/* at 768 the two-line rows of the write list and the serve log add 31-38px over their section's
+   one screen (1024); ten-px rows in the write list and --s-3 in the log give it back. The 820
+   screen (1180) holds the 16px rows as built, so the step stops at 819. */
+@media (min-width: 768px) and (max-width: 819px) {
+  #write .rows > li { padding-block: 10px; }
+  #log .rows > li { padding-block: var(--s-3); }
+  #write .rows > li:first-child, #log .rows > li:first-child { padding-top: 0; }
+  /* the versions list's four two-line rows push the serve window's foot past the section's one
+     screen and shorten the versions→footer seam; ten-px rows (as the write list) give it back */
+  #versions .rows > li { padding-block: 10px; }
+  #versions .rows > li:first-child { padding-top: 0; }
+  /* the share page's card mock grows to fill the one-screen box its two-line rules shortened on
+     the other side of the seam; the checklist centres in the taller frame */
+  #share .panel { --p-h: 444px; }
+  #share .stage > .at-rise { --ay: calc(50% - 133px) !important; }
+}
+
+/* 1024: the pin page's how list runs a line longer now; four-px rows hold the pin→footer seam
+   with the page's other gaps (the section's own 768 screen fits with room to spare) */
+@media (min-width: 1024px) and (max-width: 1100px) {
+  #how .rows > li { padding-block: var(--s-1); }
+  #how .rows > li:first-child { padding-top: 0; }
+}
+
 /* phone: every main > section keeps its one-screen box — the Batch-2 rows fold away and the
    sections give back padding, so each box fits its screen again and the grid of screens holds.
    The log, the kept and the write sections keep the kit's own screen padding on a phone: their
@@ -526,6 +564,17 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
    seam near the page's one gap */
 @media (max-width: 639px) {
   :is(#ask, #file, #versions, #share, #rules, #guides, #never, #service, #content, #changes) { padding-block: 56px 24px; }
+  /* the release sections' lists grew a line with the kit's two-line rows: they take the phone's
+     56/24 like the other lists, so each box holds its screen again (390: 875 and 858 before) */
+  #v0-9, #v0-8 { padding-block: 56px 24px; }
+  /* the rules' five two-line rows need a tighter line than the other lists to keep the box */
+  #rules .rows > li { padding-block: var(--s-1); }
+  #rules .rows > li:first-child { padding-top: 0; }
+  /* the kept card (not its rows) carries the section's height: four px less holds the box */
+  #kept .panel { --p-h: 260px; }
+  /* the docs hub ends on the file section: its mock grows a line so the footer seam sits with
+     the page's other gaps (nothing follows it to carry the slack) */
+  .page-docs #file .panel { --p-h: 585px; }
   /* the ask opens the page's seams on a phone: its rows were the Batch-2 addition and fold away
      whole, and the step down from the hero's seam lands the ask→log seam on the page's gap */
   #ask { padding-block: 128px 16px; }
@@ -574,12 +623,10 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
 /* ===================== Phase C ===================== */
 
 /* ---- the kit's rows write a name and its small as two lines (layout/hero-place and hero-film set
-   exactly this); Skillfell's page CSS never did, so the notes' rows read "Pin a skillPut a version...".
-   Scoped to the Phase C sections: the Phase B pages were fitted with their smalls inline, and a
-   block line there grows lists past their screens (the sweep's section-height fails). */
-:is(#notes, #skills, #drift, #follow, #serve-ask, #answer, #rule, #finding, #why, #principles, #message, #after) .rows .rows__name small {
-  display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small);
-}
+   exactly this); Skillfell's page CSS never did, so every row read "Pin a skillPut a version...".
+   The rule is global now: the Phase B pages are re-fitted under it, so the docs read the way the
+   kit draws them. */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
 
 /* ---- the footer's legal row: copyright left, the two legal pages right (the empty socials well is
    gone, so the row has two ends again) */
