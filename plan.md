@@ -201,6 +201,26 @@ grounds, each `main > section` one or two screens). No commit/push/deploy yet.
   with `--start` and passed: no open FAIL, the three text-contrast waivers now match no open finding,
   39 non-blocking warns.
 
+### Phase B re-fit (2026-11-23): the kit's two-line rows, everywhere — live
+
+The Phase C sweep found the Phase B rows still ran the name and its `small` together. This follow-up
+makes the kit's two-line `.rows` rule global (`page.css`) and re-fits the Phase B screens it grows;
+no waiver was added.
+
+- **Phone**: `#how`/`#rules` 4px rows (first row top 0), `#versions` 7px; `#share` panel 378px with
+  the checklist centred (`--ay-sm: calc(50% - 133px)`); privacy `#kept` panel 260px; the docs hub's
+  `#file` panel 585px via `.page-docs` on its `<main>` (the skill-file page keeps its own panel);
+  changelog `#v0-9`/`#v0-8` take the 56/24 screen padding.
+- **768–819**: `#write` 10px rows, `#log` 12px, `#versions` 10px; `#share` panel 444px with the
+  checklist centred. **1024–1100**: `#how` 4px rows (10px left the pin→footer seam at +60.7%; 4px
+  holds +42% WARN).
+- **Verification**: the nine-page sweep (1440/1024/820/768/390) leaves only the waived `cut-text`
+  and the three iris-opens `text-contrast` findings; no `section-gaps`/`section-height` FAIL. The
+  single rhythm FAIL is skill-file @820 `section-air` 610px, reproduced identically on `feffbd7`
+  (the docs hub's pin 641px air is gone — the taller rows feed that panel). The baseline's @768
+  `one-section`/`container-edges` FAILs on the skill-file now pass. Gate `PASS` (43 WARN), 320 walk
+  equal to or better than baseline. **Production**: `eb6a539` on `main`; 16 routes + 404 verified.
+
 ## Phase C (2026-11-19 – 11-20): blog (+3 notes), about, contact — live
 
 Six routes: `/blog`, the three notes, `/about`, `/contact` (16 routes + 404 in the build). All on
@@ -227,8 +247,8 @@ the Phase A/B chrome; only `public/assets/page.css` touched among the kit files.
 - **Phase B row bug found during the sweep** (subtitle concatenation, “Pin a skillPut a version”):
   the kit's rows write the name and its `small` on two lines, which Skillfell's pages never did.
   Fixing it globally grew the Phase B lists past their fitted screens (changelog @390 875px, docs
-  #pin/#log/#rules/#versions @768/390, privacy #write @768). The rule is scoped to the Phase C
-  sections; the Phase B fix is a separate patch if wanted.
+  #pin/#log/#rules/#versions @768/390, privacy #write @768). The rule was scoped to the Phase C
+  sections; the global fix and its Phase B re-fit landed in the follow-up above (`eb6a539`).
 - **Verification**: consistency on the six pages at 1440/1024/820/768/390 — every page's only FAIL
   is the waived `close-word` (hub 5/29, pinning 5/32, serve 5/29, review 5/32, about 5/29, contact
   5/35, FAIL/WARN); 320 walk 0 FAIL on all six; the Phase B sweep re-ran (9 pages) with only the
