@@ -7,11 +7,13 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "./meta";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "./site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: page not found",
-};
+  description: "The address you asked for is not pinned in this library. The page may have moved, or it was never here.",
+});
 
 export default function NotFound() {
   return (

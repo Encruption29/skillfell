@@ -1,10 +1,26 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { HOME_DESCRIPTION, HOME_TITLE, SHARE_IMAGE, SITE_NAME, SITE_URL } from "./meta";
 
 export const metadata: Metadata = {
-  title: "Skillfell: skill manager for AI coding agents",
-  description:
-    "Skillfell keeps every skill your coding agents load in one pinned library — one file per skill, versioned, shared across projects. Free while the beta runs.",
+  metadataBase: new URL(SITE_URL),
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    url: "/",
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: [SHARE_IMAGE.url],
+  },
 };
 
 export const viewport: Viewport = {
@@ -44,14 +60,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <meta name="site-kind" content="software" />
         <meta name="page-type" content="software" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Skillfell: skill manager for AI coding agents" />
-        <meta
-          property="og:description"
-          content="One pinned library for every skill your agents load. One file per skill, versioned — free while the beta runs."
-        />
-        <meta property="og:image" content="/share.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

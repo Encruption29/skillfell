@@ -6,14 +6,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "../site-chrome";
 import { NoteHero } from "../blog/note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: contact",
-  description:
-    "Early access, a bug, a security report or a question — one address, one reply within a day. The button opens your mail app; there is no form.",
-};
+  description: "Early access, a bug, a security report or a question — one address, one reply within a day. The button opens your mail app; there is no form.",
+  path: "/contact",
+});
 
 export default function Page() {
   return (

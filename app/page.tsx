@@ -7,7 +7,15 @@
 */
 
 import type { CSSProperties } from "react";
+import type { Metadata } from "next";
+import { HOME_DESCRIPTION, HOME_TITLE, pageMeta } from "./meta";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "./site-chrome";
+
+export const metadata: Metadata = pageMeta({
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  path: "/",
+});
 
 function Hero() {
   return (

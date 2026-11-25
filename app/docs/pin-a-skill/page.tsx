@@ -6,15 +6,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { DocHero } from "../../doc-hero";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: pin a skill",
-  description:
-    "Pinning puts a skill version on the library's pinned shelf: every project that follows serves that exact copy until someone moves the pin.",
-};
+  description: "Pinning puts a skill version on the library's pinned shelf: every project that follows serves that exact copy until someone moves the pin.",
+  path: "/docs/pin-a-skill",
+});
 
 export default function Page() {
   return (

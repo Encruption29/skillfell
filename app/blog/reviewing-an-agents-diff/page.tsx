@@ -5,15 +5,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 import { NoteHero } from "../note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell notes: reviewing an agent's diff",
-  description:
-    "The rule first, then the diff: one finding, a small patch, and a second reader when the change touches auth or billing.",
-};
+  description: "The rule first, then the diff: one finding, a small patch, and a second reader when the change touches auth or billing.",
+  path: "/blog/reviewing-an-agents-diff",
+});
 
 export default function Page() {
   return (

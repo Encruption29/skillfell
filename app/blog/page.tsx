@@ -6,14 +6,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import { arrow, SiteFooter, SiteNav } from "../site-chrome";
 import { NoteHero } from "./note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: notes",
-  description:
-    "Three notes from the pinned library: pinning a skill across four projects, what the serve protocol sends, and reviewing an agent's diff. One idea each, no dates.",
-};
+  description: "Three notes from the pinned library: pinning a skill across four projects, what the serve protocol sends, and reviewing an agent's diff. One idea each, no dates.",
+  path: "/blog",
+});
 
 const NOTES: Array<[string, string, string, string]> = [
   [

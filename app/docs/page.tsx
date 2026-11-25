@@ -7,14 +7,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import type { CSSProperties } from "react";
 import { arrow, SiteFooter, SiteNav } from "../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: docs",
-  description:
-    "Four guides for the pinned skill library: pin a skill, the skill file, the serve protocol and skills across projects. Each is one screen of reading.",
-};
+  description: "Four guides for the pinned skill library: pin a skill, the skill file, the serve protocol and skills across projects. Each is one screen of reading.",
+  path: "/docs",
+});
 
 function Hero() {
   return (

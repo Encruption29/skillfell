@@ -6,13 +6,14 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: terms",
-  description:
-    "The beta terms, plain: what the service is, what stays yours, and how the terms change. Nothing is billed while the beta runs.",
-};
+  description: "The beta terms, plain: what the service is, what stays yours, and how the terms change. Nothing is billed while the beta runs.",
+  path: "/terms",
+});
 
 const ASIDE = (
   <>

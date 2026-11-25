@@ -5,15 +5,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 import { NoteHero } from "../note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell notes: what the serve protocol sends",
-  description:
-    "An agent asks, Skillfell answers: two requests, one pinned copy and one log line. No draft without a flag, and three things the answer never carries.",
-};
+  description: "An agent asks, Skillfell answers: two requests, one pinned copy and one log line. No draft without a flag, and three things the answer never carries.",
+  path: "/blog/what-the-serve-protocol-sends",
+});
 
 export default function Page() {
   return (

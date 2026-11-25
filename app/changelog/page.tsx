@@ -6,14 +6,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import type { CSSProperties } from "react";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: changelog",
-  description:
-    "Every change to the Skillfell library, one line each: pins that never overwrite, drift checks on every push, search across repos. Open beta, v0.9.",
-};
+  description: "Every change to the Skillfell library, one line each: pins that never overwrite, drift checks on every push, search across repos. Open beta, v0.9.",
+  path: "/changelog",
+});
 
 function Hero() {
   return (

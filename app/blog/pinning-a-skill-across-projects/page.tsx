@@ -5,15 +5,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 import { NoteHero } from "../note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell notes: pinning a skill across projects",
-  description:
-    "One copy on the shelf, four projects following it. What a pin is, why four copies drift, and what moves when the pin moves.",
-};
+  description: "One copy on the shelf, four projects following it. What a pin is, why four copies drift, and what moves when the pin moves.",
+  path: "/blog/pinning-a-skill-across-projects",
+});
 
 export default function Page() {
   return (

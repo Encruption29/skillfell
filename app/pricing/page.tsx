@@ -6,14 +6,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import type { ReactNode } from "react";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: pricing",
-  description:
-    "The plans for the pinned skill library. Free while the beta runs; Pro €12 and Team €29 a month after, or €10 and €24 billed yearly.",
-};
+  description: "The plans for the pinned skill library. Free while the beta runs; Pro €12 and Team €29 a month after, or €10 and €24 billed yearly.",
+  path: "/pricing",
+});
 
 function Hero() {
   return (

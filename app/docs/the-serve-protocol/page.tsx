@@ -6,15 +6,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { DocHero } from "../../doc-hero";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: the serve protocol",
-  description:
-    "An agent asks, Skillfell answers: 2 requests, one pinned copy and one line in the log. No draft is ever served without a flag.",
-};
+  description: "An agent asks, Skillfell answers: 2 requests, one pinned copy and one line in the log. No draft is ever served without a flag.",
+  path: "/docs/the-serve-protocol",
+});
 
 export default function Page() {
   return (

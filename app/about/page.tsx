@@ -6,14 +6,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import { SiteFooter, SiteNav } from "../site-chrome";
 import { NoteHero } from "../blog/note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: a skill library",
-  description:
-    "One pinned library for the skills AI coding agents load. Why the copy is the problem, and the five rules the library is built on.",
-};
+  description: "One pinned library for the skills AI coding agents load. Why the copy is the problem, and the five rules the library is built on.",
+  path: "/about",
+});
 
 export default function Page() {
   return (

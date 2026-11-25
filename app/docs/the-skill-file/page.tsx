@@ -6,15 +6,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { DocHero } from "../../doc-hero";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: the skill file",
-  description:
-    "A skill is one file, SKILL.md: a name, a version and the rules the agent reads first. Skillfell keeps every version whole, from v1 to the pinned copy.",
-};
+  description: "A skill is one file, SKILL.md: a name, a version and the rules the agent reads first. Skillfell keeps every version whole, from v1 to the pinned copy.",
+  path: "/docs/the-skill-file",
+});
 
 export default function Page() {
   return (

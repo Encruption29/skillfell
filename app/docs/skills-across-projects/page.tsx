@@ -6,15 +6,16 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../../meta";
 import type { CSSProperties } from "react";
 import { DocHero } from "../../doc-hero";
 import { SiteFooter, SiteNav } from "../../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: skills across projects",
-  description:
-    "Pin once and 4 projects serve the same copy; move the pin once and every project follows. One library, no copies to sync.",
-};
+  description: "Pin once and 4 projects serve the same copy; move the pin once and every project follows. One library, no copies to sync.",
+  path: "/docs/skills-across-projects",
+});
 
 export default function Page() {
   return (

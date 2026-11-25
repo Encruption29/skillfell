@@ -6,14 +6,15 @@
 */
 
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import type { CSSProperties } from "react";
 import { MAILTO, arrow, SiteFooter, SiteNav } from "../site-chrome";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: privacy",
-  description:
-    "Your skill files stay in your repos. What reaches the server is the pin, the serve and the log — and the log leaves after 90 days.",
-};
+  description: "Your skill files stay in your repos. What reaches the server is the pin, the serve and the log — and the log leaves after 90 days.",
+  path: "/privacy",
+});
 
 export default function Page() {
   return (

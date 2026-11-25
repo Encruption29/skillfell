@@ -8,14 +8,15 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { pageMeta } from "../meta";
 import { SiteFooter, SiteNav } from "../site-chrome";
 import { NoteHero } from "../blog/note-hero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Skillfell: the skills shelf",
-  description:
-    "All 24 skills in the pinned library: six trades, one SKILL.md each, versions whole and a pin per project. Read the shelf straight through.",
-};
+  description: "All 24 skills in the pinned library: six trades, one SKILL.md each, versions whole and a pin per project. Read the shelf straight through.",
+  path: "/skills",
+});
 
 type Cat = "review" | "frontend" | "docs" | "testing" | "backend" | "ops";
 
