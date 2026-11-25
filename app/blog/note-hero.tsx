@@ -14,7 +14,7 @@ export function NoteHero({ id, kicker, h1, lead, primary, secondary, facts, grou
   h1: string;
   lead: ReactNode;
   primary: { href: string; label: string };
-  secondary: { href: string; label: string };
+  secondary?: { href: string; label: string };
   facts: NoteFact[];
   ground?: string;
 }) {
@@ -27,7 +27,7 @@ export function NoteHero({ id, kicker, h1, lead, primary, secondary, facts, grou
           <p className="hero__lead">{lead}</p>
           <div className="btn-row">
             <a className="btn btn--primary" href={primary.href}>{primary.label}</a>
-            <a className="btn btn--secondary" href={secondary.href}>{secondary.label}</a>
+            {secondary ? <a className="btn btn--secondary" href={secondary.href}>{secondary.label}</a> : null}
           </div>
         </div>
         <dl className="hero__facts">

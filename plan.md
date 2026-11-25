@@ -259,3 +259,41 @@ the Phase A/B chrome; only `public/assets/page.css` touched among the kit files.
   routes + 404 (verified). Branch previews are SSO-protected (`skillfell-git-<branch>-…vercel.app`).
   `plan.md` and `.taste-skill/checkpoint.md` are the handoff; Phase D (`/skills` catalog, no
   detail pages) is next.
+
+## Phase D (2026-11-24 – 11-26): the skills shelf — preview
+
+One route, `/skills` (17 routes + 404 in the build). Catalog only: 24 skills in six trades, no
+detail pages. Only `public/assets/page.css` touched among the kit files; the shared chrome gains
+the Skills nav item and the footer's fourth Product link.
+
+- **The catalog is one window, not a card grid.** The 24 names are ruled inside the library's own
+  `d-win` frame — three columns from 768 up, two on a phone — so the product's picture and the list
+  are the same object. The section holds the two screens the kit gives it and the grid's eight rows
+  stretch to the frame's foot. A phone folds the sentence and the initials, keeping the rule, the
+  name and the version; at 320 the name steps down to 14px so the longest names break on their own
+  hyphen instead of mid-word.
+- **The window has its own ink.** The page's `--ink` is white on the dark ground and the window's
+  body is white, so the Phase D block re-declares `--ink`, `--muted` and the two rules inside
+  `.sk-win` with the kit window's literals (`#16181a`, `#5d6268`, `rgb(0 0 0 / .1)`); the page's
+  tokens would have written the descriptions white on white.
+- **The second section says what a name is**: one file, whole versions, a pin per project, read
+  offline, one trade each. The window beside it is the shelf as the library sees it (four rows,
+  one draft). Its h2 is the page's dealt moment: `word-highlight`, the statement turning from half
+  ink to ink as it crosses the screen; reduced motion stands it in ink. One moment, as the page
+  deal allows. `counter-rolls` was tried on the five figures and dropped: the odometer's clipped
+  digit strips read as `cut-text` at every width, and no new waiver was wanted.
+- **No filters.** The optional chip row was cut with the first shelf layout: the catalog is one
+  window read straight through, and a filter would have added a second control language (and a
+  no-JS fallback) for a 24-name list that already fits two screens.
+- **Chrome**: Skills joins the nav (current on `/skills`), the footer's Product column and the
+  Product menu's first entry ("All skills"); `/blog`'s shelf link now opens `/skills`.
+- **The footer's link columns**: with the fourth Product link, the two-up tablet footer ran 35px
+  past its 768 screen. The 640–1023 range now sits three-up (`span 4`); the phone keeps the kit's
+  two-up and the 320 walk fits.
+- **Verification**: consistency on `/skills` at 1440/1024/820/768/390 — 5 FAIL, all the waived
+  `close-word`; the only new WARNs are the dealt moment's expected `scroll-linked`/`scroll-reveal`
+  notes. The 320 walk fits (shelf two screens, footer inside its screen). The sweep of all 16
+  routes at 1440/1024/820/768/390 finds no new section overflow (the homepage product mock's 1024
+  overflow is pre-existing and reproduces on production); consistency on `/`, `/about`, `/blog`
+  and `/docs` adds no FAIL beyond the waived `close-word` and the three old index `text-contrast`
+  waivers. Gate re-armed, `GATE: PASS` (43 WARN, non-blocking).

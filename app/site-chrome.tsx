@@ -7,11 +7,13 @@
   column (docs, changelog, privacy, terms), and pages can mark their nav item aria-current.
    Phase C: Docs joins the nav, the footer's Resources column carries Docs, Blog, Changelog and
    About, Contact points at /contact, and the legal pages move to the legal row beside the copyright.
+   Phase D: Skills joins the nav and the footer's Product column; the Product menu's first entry
+   opens the catalog (/skills) instead of the landing's section.
 */
 
 export const MAILTO = "mailto:hello@skillfell.example";
 
-type ChromeProps = { home?: boolean; current?: "pricing" | "docs" };
+type ChromeProps = { home?: boolean; current?: "pricing" | "docs" | "skills" };
 
 export const arrow = (
   <svg className="m-arrow" viewBox="0 0 12 12" aria-hidden="true">
@@ -40,7 +42,7 @@ export function SiteNav({ home = false, current }: ChromeProps) {
               <div className="wrap grid">
                 <div className="menu-col span-3">
                   <p className="t-label">Library</p>
-                  <a href={a("product")}>Skills<span>One window, every skill</span></a>
+                  <a href="/skills">All skills<span>The whole shelf, 24 files</span></a>
                   <a href={a("product")}>Versions<span>Pinned, never overwritten</span></a>
                 </div>
                 <div className="menu-col span-3">
@@ -52,6 +54,7 @@ export function SiteNav({ home = false, current }: ChromeProps) {
             </div>
           </div>
           <div className="nav__item"><a className="nav__link" href={a("features")}>Features</a></div>
+          <div className="nav__item"><a className="nav__link" href="/skills" aria-current={current === "skills" ? "page" : undefined}>Skills</a></div>
           <div className="nav__item"><a className="nav__link" href="/docs" aria-current={current === "docs" ? "page" : undefined}>Docs</a></div>
           <div className="nav__item"><a className="nav__link" href="/pricing" aria-current={current === "pricing" ? "page" : undefined}>Pricing</a></div>
           <div className="nav__item"><a className="nav__link" href={a("faq")}>FAQ</a></div>
@@ -90,7 +93,7 @@ export function SiteFooter({ home = false }: ChromeProps) {
             </div>
             <div className="span-3 footer__col">
               <h3>Product</h3>
-              <ul><li><a href={a("product")}>Library</a></li><li><a href={a("features")}>Features</a></li><li><a href={a("cli")}>Terminal</a></li></ul>
+              <ul><li><a href="/skills">Skills</a></li><li><a href={a("product")}>Library</a></li><li><a href={a("features")}>Features</a></li><li><a href={a("cli")}>Terminal</a></li></ul>
             </div>
             <div className="span-3 footer__col">
               <h3>Plans</h3>

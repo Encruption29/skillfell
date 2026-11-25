@@ -1,8 +1,8 @@
 /*
   /blog — the notes index (Phase C). Dealt hero: statement (the shared NoteHero) with reading
   facts, never dates or a byline. Section one is the three notes as whole-row links beside the
-  index drawn as the library's own window; section two names the four skills the notes quote, so
-  the examples have a shelf behind them before /skills arrives.
+  index drawn as the library's own window; section two names the four skills the notes quote and
+  opens the shelf (/skills) that holds the other twenty.
 */
 
 import type { Metadata } from "next";
@@ -89,7 +89,7 @@ function Skills() {
             <li><span className="rows__name">api-migrations<small>The draft the protocol serves with a flag</small></span><span className="rows__value">v1</span></li>
             <li><span className="rows__name">commit-style<small>The format the review asks the agent to keep</small></span><span className="rows__value">v2</span></li>
           </ul>
-          <a className="link" href="/docs">Read the four guides</a>
+          <a className="link" href="/skills">Browse all 24 skills</a>
         </div>
         <div className="span-6 start-7">
           <div className="d-win sf-mini" data-ui="" role="img" aria-label="The library window: code-review v3 pinned, taste-skill v2, api-migrations v1 and commit-style v2 on the shelf">

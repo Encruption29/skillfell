@@ -171,11 +171,12 @@
   #faq .faq__item { padding-block: 14px; }
   #faq .faq__item:first-child { padding-top: 0; }
 }
-/* the footer's link columns sit two-up under 1024 (the kit stacks the grid's kids full width
-   there, which leaves the right half of the footer empty); the pause button's ring reads on the
-   pale fluted frame at the widths where the window carries it — the direct child only, so the
-   convo's own pause on the dark window keeps the kit's ring */
-@media (max-width: 1023px) { #contact .closing__links .grid > .footer__col { grid-column: span 6; } }
+/* the footer's link columns sit three-up on the tablet (the kit stacks the grid's kids full width
+   there, which leaves the right half of the footer empty; with the fourth Product link, two-up
+   pushed the footer 35px past its screen at 768; the phone keeps its two-up); the pause button's
+   ring reads on the pale fluted frame at the widths where the window carries it — the direct child
+   only, so the convo's own pause on the dark window keeps the kit's ring */
+@media (min-width: 640px) and (max-width: 1023px) { #contact .closing__links .grid > .footer__col { grid-column: span 4; } }
 @media (min-width: 1024px) { .hero__window > .ui-pause:focus-visible { outline-color: #0f1f10; } }
 
 /* the narrow end: the wordmark and the bar's button slim down so the toggle clears 320px
@@ -813,4 +814,74 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
      says what the button does (it opens your mail app, nothing is posted), so the body waits for
      a wider screen and the signature with it */
   #message .sf-mail__body { display: none; }
+}
+
+/* ===================== Phase D: the skills shelf =====================
+   /skills is a catalog, not a set of detail pages, so the catalog is drawn as the library's own
+   window: one frame, its bar, and the 24 names ruled inside it. That makes the product's picture
+   and the list one thing, and the grid fills the two screens the kit gives the section from 768 up
+   (the window's body takes the rest, its eight rows stretch to the frame's foot). A phone gives
+   each name two lines of room: two columns, the rule, the version; the sentence waits for a wider
+   screen, where there is room for it. */
+
+@media (min-width: 768px) {
+  #shelf { height: calc(2 * 100svh); min-height: 0; }
+  #shelf > .wrap { height: 100%; display: flex; flex-direction: column; }
+}
+@media (max-width: 767px) {
+  #shelf { --h: 2; }
+}
+
+/* the window is a light ground on the page's dark one: its words take the window's own ink and
+   rules, never the page's (the page's --ink is white here, which would vanish on the white body) */
+.sk-win {
+  --ink: #16181a; --muted: #5d6268; --line: rgb(0 0 0 / .1); --line-strong: rgb(0 0 0 / .2);
+  flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
+}
+.sk-head > .link { justify-self: start; }
+.sk-win .d-win__body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; grid-template-columns: minmax(0, 1fr); padding: 0 20px 18px; }
+.sk-grid {
+  flex: 1 1 auto; min-height: 0; margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--s-6);
+}
+@media (min-width: 768px) { .sk-grid { grid-auto-rows: minmax(min-content, 1fr); } }
+.sk { display: flex; flex-direction: column; gap: 0; min-width: 0; padding: var(--s-3) 0 8px; border-top: 1px solid var(--line); }
+.sk__head { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
+.sk__name { font: 500 var(--t-card)/1.25 var(--font-text); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.sk__v { margin-left: auto; flex: none; padding: 3px 6px; border: 1px solid var(--line); border-radius: var(--r-sm); font: 500 var(--t-small)/1 var(--font-mono); color: var(--muted); }
+.sk__text { color: var(--ink); font-size: var(--t-body); line-height: 1.4; max-width: 36ch; padding-top: 2px; }
+.sk__foot { margin-top: auto; padding-top: var(--s-1); display: flex; justify-content: space-between; gap: var(--s-4); font-size: var(--t-small); color: var(--muted); }
+
+@media (max-width: 1023px) {
+  .sk-win .d-win__body { padding-inline: 16px; }
+  .sk-grid { column-gap: var(--s-5); }
+}
+@media (max-width: 767px) {
+  .sk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* the phone: an index of names, two columns, no sentence and no initials (the rule and the version
+   keep each file apart); the shelf still takes its two screens */
+@media (max-width: 639px) {
+  .sk-win .d-win__body { padding: 0 14px 12px; }
+  .sk-grid { column-gap: var(--s-4); }
+  .sk { gap: 0; padding: 10px 0 8px; }
+  .sk .sf-av { display: none; }
+  .sk__head { gap: var(--s-2); }
+  .sk__name { font-size: var(--t-body); }
+  .sk__text { display: none; }
+  .sk__foot { padding-top: 2px; font-size: var(--t-label); }
+}
+/* the 320 screen leaves the two columns too narrow for the longest names at body size: a step down
+   lets them break on their own hyphen instead of mid-word */
+@media (max-width: 359px) { .sk__name { font-size: var(--t-small); } }
+
+/* the file section: the words and the window centre in the screen the kit gives the section. Under
+   1200 the split is narrow enough that five rows would push the section past its screen, so the
+   last two wait for the wide screen; on a phone all the rows fold away (the lead says the same in
+   a sentence) and the window stays as the section's picture */
+#pins .wrap.grid { align-content: center; }
+@media (max-width: 1199px) { #pins .rows > li:nth-child(n + 4) { display: none; } }
+@media (max-width: 639px) {
+  #pins .rows { display: none; }
+  #pins .d-win { margin-top: var(--s-2); }
 }
