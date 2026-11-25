@@ -260,7 +260,7 @@ the Phase A/B chrome; only `public/assets/page.css` touched among the kit files.
   `plan.md` and `.taste-skill/checkpoint.md` are the handoff; Phase D (`/skills` catalog, no
   detail pages) is next.
 
-## Phase D (2026-11-24 – 11-26): the skills shelf — preview
+## Phase D (2026-11-24 – 11-26): the skills shelf — live
 
 One route, `/skills` (17 routes + 404 in the build). Catalog only: 24 skills in six trades, no
 detail pages. Only `public/assets/page.css` touched among the kit files; the shared chrome gains
@@ -297,3 +297,7 @@ the Skills nav item and the footer's fourth Product link.
   overflow is pre-existing and reproduces on production); consistency on `/`, `/about`, `/blog`
   and `/docs` adds no FAIL beyond the waived `close-word` and the three old index `text-contrast`
   waivers. Gate re-armed, `GATE: PASS` (43 WARN, non-blocking).
+- **Deployed**: commit `8589d5d` on `main`; production `skillfell.vercel.app` serves all 17 routes
+  + 404 (verified, `/skills` 200). `/skills` mounts its moment, marks the Skills nav item current,
+  and carries the footer link. The next phase is `sitemap.xml`, `robots.txt`, per-route metadata/OG,
+  the final sweep and the performance/accessibility audit.
