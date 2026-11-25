@@ -301,3 +301,34 @@ the Skills nav item and the footer's fourth Product link.
   + 404 (verified, `/skills` 200). `/skills` mounts its moment, marks the Skills nav item current,
   and carries the footer link. The next phase is `sitemap.xml`, `robots.txt`, per-route metadata/OG,
   the final sweep and the performance/accessibility audit.
+
+## Phase E (2026-11-26): metadata per route, sitemap, robots — live
+
+The head was still the landing's on every route: one global `og:title`/`og:description` and no
+canonical. This pass gives each route its own head, adds the two crawler files and keeps the
+existing share image.
+
+- **One helper, `app/meta.ts`.** It owns the origin (`https://skillfell.vercel.app`), the site name,
+  the 1440×900 `share.jpg` (with width, height and alt) and `pageMeta({ title, description, path })`.
+  Next shallow-merges metadata, so a page that sets `openGraph` replaces the layout's whole object;
+  the helper therefore writes title, description, canonical, `og:*` and `twitter:*` together. The
+  layout keeps `metadataBase` and the home fallback; `app/page.tsx` repeats the home title and
+  description through the helper so the landing gets the same canonical/OG treatment.
+- **All 17 routes** carry a canonical path, their own `og:title`/`og:description`/`og:url`, and
+  `twitter:title`/`description`; the 404 has an OG title and description but no canonical (a 404 is
+  not a page to keep). The hand-written OG tags in `layout.tsx` are gone, so nothing is duplicated.
+- **`app/sitemap.ts`** lists the 17 public routes with the Phase D date, monthly for the product
+  pages and yearly for the guides, notes, legal pages and contact; **`app/robots.ts`** allows the
+  whole site and points at the sitemap (with the production host). Both export
+  `dynamic = "force-static"` for `output: "export"`.
+- **Verification**: the built head carries one canonical, one set of OG tags and one set of Twitter
+  tags per route (checked on `/`, `/skills`, `/about`, `/blog`, a note, a guide and 404);
+  `out/sitemap.xml` has 17 `<loc>` entries and `out/robots.txt` carries the sitemap and host.
+  `/skills` stays at 5 FAIL (all the waived `close-word`); `/` at 8 (5 `close-word` + the 3 old
+  `text-contrast` waivers). Gate re-armed, `GATE: PASS` (42 WARN, non-blocking).
+- **Local audit (headless Chrome, 1440×900)**: landing LCP 1.23s / CLS 0.005; `/skills` LCP 0.70s /
+  CLS 0; reduced motion marks all eight statement words in ink and finishes the moment; with
+  JavaScript off the h1, all 24 names, the nav and the footer links stand.
+- **Deployed**: commit `a57025c` on `main`; production serves `/sitemap.xml` (17 URLs) and
+  `/robots.txt` (200), and all 17 routes + 404 still answer as before. The site is feature-complete
+  for this pass; the next work is maintenance, not a new route.
