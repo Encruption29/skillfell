@@ -32,11 +32,13 @@ function Hero() {
         </div>
         <div
           className="hero__window"
+          data-visual
           data-fx="fluted-glass"
           data-fx-seed="7"
           data-fx-palette='{"bg":"#e9efe0","surface":"#dbe5cd","ink":"#16240f","accent":"#57813f"}'
           role="img"
           aria-label="The opencode agent asking Skillfell for the code-review skill and receiving its pinned copy"
+          data-ui-pause-host
           data-moment="cursor-spotlight"
           data-moment-opts={'{"rest": [0.74, 0.26], "radius": 460}'}
         >

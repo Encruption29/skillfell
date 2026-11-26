@@ -20,7 +20,7 @@
 .inbox .t.is-on { background: rgb(255 255 255 / .07); }
 .inbox .t i { grid-row: 1 / span 2; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 600 13px/1 var(--font-text); font-style: normal; color: #0f1f10; }
 .inbox .t b { font-weight: 500; color: #eceee8; }
-.inbox .t time { color: #7d8389; font-size: 13px; }
+.inbox .t time { color: #9aa0a6; font-size: 13px; }
 .inbox .t span { grid-column: 2 / -1; color: #8d9399; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .convo { display: grid; min-width: 0; align-content: start; }
 .acts { display: flex; gap: 8px; }
