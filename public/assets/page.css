@@ -11,7 +11,7 @@
 .hero__window .d-chat { padding: 12px 18px; gap: 6px; }
 .hero__window .d-msg--me small { display: none; }
 .hero__window .d-msg--bot { max-width: 86%; background: #22262b; color: #eceef0; }
-.hero__window .d-msg--bot small { display: inline; margin: 0 0 0 8px; white-space: nowrap; }
+.hero__window .d-msg--bot small { display: inline; margin: 0 0 0 8px; white-space: nowrap; opacity: 1; color: #b6babd; }
 
 /* the library column (context rows) */
 .inbox { border-right: 1px solid rgb(255 255 255 / .07); padding: 10px; display: grid; align-content: start; gap: 2px; }
