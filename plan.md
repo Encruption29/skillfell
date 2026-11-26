@@ -332,3 +332,26 @@ existing share image.
 - **Deployed**: commit `a57025c` on `main`; production serves `/sitemap.xml` (17 URLs) and
   `/robots.txt` (200), and all 17 routes + 404 still answer as before. The site is feature-complete
   for this pass; the next work is maintenance, not a new route.
+
+## Final pass (2026-11-26): sweep, accessibility, share card — live
+
+The last open item in Phase E was the full sweep and the accessibility audit, plus the share image's
+composition. This pass closes them.
+
+- **Layout sweep, 18 documents × 6 widths** (1440, 1024, 820, 768, 390, 320): no horizontal page
+  overflow and no element crossing the viewport edge outside a clipping ancestor. The old 69px
+  homepage mock reading was an internal window overflow, clipped by its own pane; it never scrolled
+  the page.
+- **Head/a11y, all 18 documents**: exactly one `h1`, one `main`, one `footer`, `lang="en"`; every
+  image has `alt`, every link/button a name; canonical + full OG + Twitter set on the 17 routes (the
+  404 keeps OG but no canonical). The only heading-order jumps are the decorative `h4`/`h5` labels
+  inside `role="img"` hero mocks — presentational by ARIA, so not document structure.
+- **Keyboard**: the skip link is the first Tab stop, expands to 163×44 at the top of the page with
+  the 2px action outline; the next stops (brand, menu, nav) all carry the same visible outline.
+- **Reduced motion**: `cursor-spotlight` and `iris-opens` hosts report `data-moment-still="reduced"`,
+  no content is left hidden, and `/skills` marks all eight statement words in ink. The class-based
+  `is-done` counter is not the state for pointer moments; the visual check is.
+- **No JavaScript**: all 18 documents keep their `h1`, their copy and the footer links.
+- **Share card**: `share.jpg` was 1440×900 (1.6:1) and every social card would crop it. It is now
+  1200×630 (1.91:1), a centre crop of the same hero — the title, lead, buttons and the top of the
+  pinned window survive — and `SHARE_IMAGE` carries the new dimensions.

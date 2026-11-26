@@ -16,8 +16,8 @@ export const HOME_DESCRIPTION =
 
 export const SHARE_IMAGE = {
   url: "/share.jpg",
-  width: 1440,
-  height: 900,
+  width: 1200,
+  height: 630,
   alt: "The Skillfell landing: skill manager for AI coding agents, with the pinned library window.",
 };
 
