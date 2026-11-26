@@ -904,3 +904,9 @@ html:is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary { border
   #pins .rows { display: none; }
   #pins .d-win { margin-top: var(--s-2); }
 }
+
+/* the pale mocks' muted labels: the page's muted tone is mixed for the dark grounds, so on the
+   white terminal and the pale cards it falls under 4.5:1; those surfaces take an ink tint instead
+   (the terminal's labels, the card rows' second lines and the shelf's note) */
+#cli .ui-term { --u-muted: color-mix(in oklab, var(--u-ink) 62%, var(--u-bg)); }
+.d-row small, .sf-plan__price small, .sf-plans__note { color: #666b71; }
