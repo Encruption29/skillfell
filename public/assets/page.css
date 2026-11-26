@@ -285,10 +285,29 @@
 .sf-doccard:hover { translate: 0 -2px; }
 .sf-doccard .link { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; }
 /* the file panels: the doc fragment stands taller than the kit's default panel at every width
-   (its page runs out through the edge at 1024 and 390) — 470 on the wide screens, 520 where the
-   split stacks and the fragment wraps longer */
+   (its page runs out through the edge at 1024 and 390) — 470 on the wide screens, 495 from 1280
+   where the section's fill is read, 520 at 1152-1279 where the fragment wraps one line longer,
+   and 520 where the split stacks and the page fills the frame */
 #file .panel { --p-h: 470px; }
+@media (min-width: 1152px) and (max-width: 1279px) { #file .panel { --p-h: 520px; } }
+@media (min-width: 1280px) { #file .panel { --p-h: 495px; } }
 @media (max-width: 1023px) { #file .panel { --p-h: 520px; } }
+/* from 640 up the file page fills its panel and carries its foot on the frame's lower edge: the
+   section's seam then reads the panel's whole page, not the empty half under its last line. On a
+   phone the page already fills the frame, and the foot would push the seam under its minimum. */
+#file .ui-doc__foot { display: none; }
+@media (min-width: 640px) and (max-width: 1023px), (min-width: 1152px) {
+  #file .stage > .at-rise { bottom: var(--ay, 24px); height: auto; }
+  #file .stage > .at-rise > .ui,
+  #file .stage > .at-rise .ui-doc { height: 100%; }
+  #file .ui-doc__page { display: flex; flex-direction: column; height: 100%; padding-bottom: 24px; }
+  #file .ui-doc__foot {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    margin-top: auto; padding-top: 12px;
+    border-top: 1px solid color-mix(in oklab, var(--u-ink) 12%, transparent);
+    font-size: 12px; line-height: 16px; color: var(--u-muted);
+  }
+}
 .sf-cap { margin-top: var(--s-4); }
 
 /* ---- /changelog: the release feed is a single-column window (the landing hero's dark window is

@@ -84,6 +84,7 @@ export default function Page() {
                       <div className="ui-doc__text">When the diff touches auth or billing, ask for a second reviewer before you answer.</div>
                       <div className="ui-doc__text">Keep the examples runnable: a rule the agent cannot try is a rule it skips.</div>
                       <div className="ui-doc__text">If a rule cannot be checked, it is not a rule — say what to run instead.</div>
+                      <div className="ui-doc__foot" aria-hidden="true"><span>6 rules · read whole</span><span>v3</span></div>
                     </article>
                     <aside className="ui-doc__note ui-panel is-on" aria-live="polite">
                       <div className="ui-doc__kind"><span className="ui-doc__dot"></span><span data-doc-kind>Pin</span></div>
