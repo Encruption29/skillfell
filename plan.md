@@ -355,3 +355,41 @@ composition. This pass closes them.
 - **Share card**: `share.jpg` was 1440×900 (1.6:1) and every social card would crop it. It is now
   1200×630 (1.91:1), a centre crop of the same hero — the title, lead, buttons and the top of the
   pinned window survive — and `SHARE_IMAGE` carries the new dimensions.
+
+## Release pass (2026-11-26): a11y, Lighthouse, v1.0.0 — live
+
+The last open checker reading and the release itself. No new waiver was added; the four old ones
+stay as they were.
+
+- **`section-air` on `/docs/the-skill-file` @820** (610px between `#file` and `#versions`) was the
+  one open FAIL. The file page now fills its panel and carries its foot on the frame's lower edge
+  from 640px up, so the section's seam reads the whole page, not the empty half under its last
+  line. `#file .panel` is 470 by default, 520 at 1152–1279 (the fragment wraps one line longer),
+  495 from 1280 and 520 where the split stacks. The fix is `page.css` + one decorative foot line
+  in the page; the checker now leaves only the five waived `close-word` findings at every width.
+- **IndexNow**: the key file is live at `/4e0aefcfa31412e05e3d6a5233c0cfc8.txt`; all 17 routes
+  were POSTed to `api.indexnow.org` and accepted with `202`.
+- **A11y**: the hero's looping convo put its pause button inside the `aria-hidden` mock, so the
+  button was focusable but hidden from assistive technology. The window now owns the pause host
+  and the mock is a `data-visual`; the button is a real focus stop named “Pause animation” and the
+  mock stays one decorative picture. The inbox `time`, the terminal's muted labels, the pale
+  cards' second lines and the bot message's meta were ink-tinted to clear 4.5:1 on their own
+  surfaces.
+- **Lighthouse production** (Chrome 158 headless, 2026-11-26; performance / accessibility /
+  best-practices / SEO):
+  - `/` desktop **53 / 100 / 100 / 100** — FCP 1.1s, LCP 1.5s, CLS 0.006, TBT 23.85s
+  - `/` mobile **51 / 100 / 100 / 100** — FCP 2.5s, LCP 5.6s, CLS 0, TBT 1.27s
+  - `/skills` desktop **95 / 100 / 100 / 100** — FCP 0.8s, LCP 1.2s, CLS 0, TBT 0
+  - `/skills` mobile **76 / 100 / 100 / 100** — FCP 2.6s, LCP 4.6s, CLS 0, TBT 210ms
+  - The homepage's performance is the fluted-glass shader on headless software WebGL; the same
+    page with WebGL disabled scores **95** (TBT 20ms). On a GPU the shader is one pass, so the
+    number is reported with that caveat rather than removed to flatter the audit. Accessibility,
+    best-practices and SEO are 100 on every run.
+- **Verification**: consistency `/` 8 FAIL (5 waived `close-word` + the 3 old index
+  `text-contrast` readings), `/docs/the-skill-file` 5 FAIL (all waived `close-word`), no
+  `section-air`; gate `GATE: PASS` (43 WARN, non-blocking). Production: 17 routes 200, `/404`
+  404, `/sitemap.xml` 17 `<loc>`, `/robots.txt` 200 with Host + Sitemap, `/share.jpg` 1200×630.
+- **Release**: `v1.0.0` at this commit, with a GitHub release whose notes point at the live site,
+  the 17-route sitemap, the metadata pass and the final audit.
+- **Sitemap submission**: IndexNow is done; Google Search Console and Bing Webmaster Tools still
+  need the owner's login. The sitemap URL is `https://skillfell.vercel.app/sitemap.xml`.
