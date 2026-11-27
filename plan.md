@@ -393,3 +393,8 @@ stay as they were.
   the 17-route sitemap, the metadata pass and the final audit.
 - **Sitemap submission**: IndexNow is done; Google Search Console and Bing Webmaster Tools still
   need the owner's login. The sitemap URL is `https://skillfell.vercel.app/sitemap.xml`.
+- **Search Console verification**: the owner supplied
+  `public/google9ff449004d09990e.html`; Vercel's clean URLs hid the `.html` path, so
+  `vercel.json` rewrites the exact verification URL to the extensionless file. Production now
+  returns the 53-byte body with HTTP 200 (checked with the Googlebot user agent too). Clicking
+  Verify and submitting the sitemap are the owner's account actions.
