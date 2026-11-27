@@ -391,8 +391,9 @@ stay as they were.
   404, `/sitemap.xml` 17 `<loc>`, `/robots.txt` 200 with Host + Sitemap, `/share.jpg` 1200×630.
 - **Release**: `v1.0.0` at this commit, with a GitHub release whose notes point at the live site,
   the 17-route sitemap, the metadata pass and the final audit.
-- **Sitemap submission**: IndexNow is done; Google Search Console and Bing Webmaster Tools still
-  need the owner's login. The sitemap URL is `https://skillfell.vercel.app/sitemap.xml`.
+- **Sitemap submission**: IndexNow is done, and the owner completed the Google Search Console
+  and Bing Webmaster Tools steps on 2026-11-27 (verification through the HTML file, then
+  `sitemap.xml`). The sitemap URL is `https://skillfell.vercel.app/sitemap.xml`.
 - **Search Console verification**: the owner supplied
   `public/google9ff449004d09990e.html`; Vercel's clean URLs hid the `.html` path, so
   `vercel.json` rewrites the exact verification URL to the extensionless file. Production now
